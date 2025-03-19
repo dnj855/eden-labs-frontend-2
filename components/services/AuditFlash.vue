@@ -105,19 +105,21 @@
 
       <!-- CTA - Adapté pour mobile -->
       <div class="mt-8 sm:mt-10 md:mt-12 flex justify-center">
-        <button
-          type="button"
-          class="group relative rounded-full bg-tertiary px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-tertiary/90 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-tertiary"
-          @click="$emit('open-booking')"
-        >
-          <span class="block transition-opacity duration-300 group-hover:opacity-0">
-            Réserver mon audit flash
-          </span>
-          <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-            Commencer maintenant →
-          </span>
-        </button>
-      </div>
+            <ContactButton
+              :service="'audit'"
+              :rounded="true"
+              :primary="false"
+              variant="solid"
+              class="group relative px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold"
+            >
+              <span class="block transition-opacity duration-300 group-hover:opacity-0">
+                Réserver mon audit flash
+              </span>
+              <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                Commencer maintenant →
+              </span>
+            </ContactButton>
+          </div>
     </div>
   </div>
 </template>

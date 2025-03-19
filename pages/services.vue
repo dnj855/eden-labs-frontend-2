@@ -214,6 +214,7 @@ import { ArrowUpIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import useContactModalState from '~/composables/useContactModal'
 
 // Composants
 import AteliersComponent from '~/components/services/Ateliers.vue'
@@ -474,7 +475,9 @@ function scrollToTop() {
 
 // Handlers
 function openBookingModal() {
-  showBookingModal.value = true
+  // Au lieu d'ouvrir la modale de réservation, nous ouvrons la modale de contact
+  const contactModalState = useContactModalState();
+  contactModalState.open('audit'); // Par défaut, sélectionne "audit"
 }
 
 function subscribeNewsletter(email: string) {

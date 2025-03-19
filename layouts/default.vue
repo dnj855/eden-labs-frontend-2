@@ -33,8 +33,15 @@
             </ul>
           </div>
           <div>
-            <h4 class="font-headers font-semibold text-secondary">Contact</h4>
-            <ul class="mt-4 space-y-2">
+            <ul class="space-y-2">
+              <li>
+                <button 
+                  @click="openContactModal()" 
+                  class="mb-3 flex cursor-pointer justify-center items-center bg-gradient-to-r from-secondary to-tertiary text-primary px-2 py-2 md:px-4 md:py-4 rounded-md text-xs font-headers font-medium hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+                >
+                  Formulaire de contact
+                </button>
+              </li>
               <li>
                 <a href="mailto:contact@eden-labs.fr" class="text-secondary/70 hover:text-primary transition-colors duration-200 font-body">
                   contact@eden-labs.fr
@@ -56,6 +63,16 @@
       </div>
     </footer>
   </div>
+
+  <!-- Modale de contact -->
+  <ContactModal 
+    :is-open="contactModalState.isOpen.value" 
+    :initial-service="contactModalState.initialService.value"
+    @close="contactModalState.close()"
+    @submit="handleContactSubmit"
+  />
+
+  <!-- Modal de réservation -->
   <TransitionRoot appear :show="showBookingModal" as="template">
       <Dialog as="div" @close="closeBookingModal" class="relative z-50" :initialFocus="bookingModalInitialFocus">
         <TransitionChild
@@ -125,6 +142,8 @@ import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } fro
 import { XMarkIcon } from '@heroicons/vue/24/outline';
 import { useRoute } from 'vue-router';
 import BookingCTA from '~/components/BookingCTA.vue';
+import ContactModal from '~/components/ContactModal.vue';
+import useContactModalState from '~/composables/useContactModal';
 
 interface NavigationItem {
   path: string;
@@ -168,4 +187,15 @@ function closeBookingModal() {
   }
 }
 
-</script> 
+// Contact modal
+const contactModalState = useContactModalState();
+
+function openContactModal(service = '') {
+  contactModalState.open(service);
+}
+
+function handleContactSubmit(formData: any) {
+  console.log('Formulaire de contact soumis:', formData);
+  // Vous pouvez ajouter ici une logique supplémentaire si nécessaire
+}
+</script>

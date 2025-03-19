@@ -25,11 +25,11 @@
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
-          <button
-            class="bg-gradient-to-r from-secondary to-tertiary text-primary px-3 py-2 md:px-4 md:py-2 rounded-md text-sm font-headers font-medium hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+          <ContactButton
+            :custom-class="'bg-gradient-to-r from-secondary to-tertiary text-primary px-3 py-2 md:px-4 md:py-2 rounded-md text-sm font-headers font-medium hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary'"
           >
             Contactez-nous
-          </button>
+          </ContactButton>
         </div>
         <div class="flex items-center sm:hidden">
           <button
@@ -99,11 +99,11 @@
         </div>
         <div class="pt-4 pb-2 border-t border-secondary/10">
           <div class="px-4 py-2">
-            <button
-              class="w-full text-left block px-4 py-2 text-base font-headers font-medium bg-gradient-to-r from-secondary to-tertiary text-primary rounded-md hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200"
+            <ContactButton
+              :custom-class="'w-full text-left block px-4 py-2 text-base font-headers font-medium bg-gradient-to-r from-secondary to-tertiary text-primary rounded-md hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200'"
             >
               Contactez-nous
-            </button>
+            </ContactButton>
           </div>
         </div>
       </div>
@@ -114,12 +114,26 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 
+interface NavigationItem {
+  path: string;
+  name: string;
+  // Ajoutez d'autres propriétés si nécessaire
+}
+
+// Définir l'interface pour la réponse de l'API
+interface NavigationResponse {
+  data: {
+    data: NavigationItem[];
+    // Ajoutez d'autres propriétés si nécessaire
+  };
+}
+
 const isOpen = ref(false)
 
 const baseUrl = useRuntimeConfig().public.strapiUrl;
 const { $api } = useNuxtApp();
 const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
-const navigationItems = computed(() => (data.value)?.data?.data || []);
+const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
 
 
 // Fermer le menu quand l'écran devient large

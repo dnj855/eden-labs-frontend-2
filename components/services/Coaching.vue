@@ -55,167 +55,167 @@
       <div class="mx-auto mt-10 sm:mt-12 lg:mt-16 max-w-2xl lg:max-w-none">
         <h3 class="text-lg sm:text-xl font-semibold text-secondary text-center mb-6 sm:mb-8">Nos formules de coaching</h3>
         
-        <!-- Carrousel sur mobile / Grid sur tablette+ -->
-        <div class="sm:hidden relative">
-          <!-- Conteneur du carrousel -->
-          <div class="overflow-hidden">
-            <div 
-              class="flex transition-transform duration-300 ease-in-out"
-              :style="{ transform: `translateX(-${activeSlide * 100}%)` }"
-            >
-              <div 
-                v-for="(formula, index) in coachingFormulas" 
-                :key="index"
-                class="w-full flex-shrink-0 px-1"
-              >
-                <!-- Card de formule -->
-                <div 
-  :class="[
-    'bg-white/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full relative',
-    formula.title === 'Premium' ? 'ring-2 ring-primary/0' : ''
-  ]"
->
-                  <!-- Badge "Recommandé" - Correction de la bordure -->
-                  <div v-if="formula.title === 'Premium'" class="absolute top-3 right-3 bg-primary text-white text-xs px-2 py-0.5 rounded-full">
-                    Recommandé
-                  </div>
+       <!-- Version mobile du carrousel -->
+<div class="sm:hidden relative">
+  <!-- Conteneur du carrousel -->
+  <div class="overflow-hidden">
+    <div 
+      class="flex transition-transform duration-300 ease-in-out"
+      :style="{ transform: `translateX(-${activeSlide * 100}%)` }"
+    >
+      <div 
+        v-for="(formula, index) in coachingFormulas" 
+        :key="index"
+        class="w-full flex-shrink-0 px-1"
+      >
+        <!-- Card de formule -->
+        <div 
+          :class="[
+            'bg-white/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full relative',
+            formula.title === 'Premium' ? 'ring-2 ring-primary/0' : ''
+          ]"
+        >
+          <!-- Badge "Recommandé" -->
+          <div v-if="formula.title === 'Premium'" class="absolute top-3 right-3 bg-primary text-white text-xs px-2 py-0.5 rounded-full">
+            Recommandé
+          </div>
 
-                  <!-- En-tête de la formule -->
-                  <div :class="[
-                    'p-4',
-                    formula.title === 'Premium' ? 'bg-primary/20' : 'bg-primary/5'
-                  ]">
-                    <div>
-                      <h4 class="text-base font-semibold text-secondary">{{ formula.title }}</h4>
-                      <p class="text-xs text-secondary/70 mt-1">{{ formula.subtitle }}</p>
-                    </div>
-                  </div>
-                  
-                  <!-- Contenu de la formule -->
-                  <div class="p-4 flex flex-col flex-grow">
-                    <div class="mb-3">
-                      <div v-if="formula.price">
-                        <span class="text-xl font-bold text-secondary">{{ formula.price }}</span>
-                        <span class="text-xs text-secondary/70"> HT</span>
-                      </div>
-                      <div v-else>
-                        <span class="text-xl font-bold text-secondary">Sur demande</span>
-                      </div>
-                    </div>
-                    
-                    <ul class="space-y-2 mb-4">
-                      <li v-for="(feature, i) in formula.features" :key="i" class="flex items-start">
-                        <CheckIcon class="h-3.5 w-3.5 text-primary mt-0.5 mr-1.5 flex-shrink-0" />
-                        <span class="text-xs text-secondary/70">{{ feature }}</span>
-                      </li>
-                    </ul>
-                    
-                    <button
-                      type="button"
-                      class="w-full rounded-md bg-primary/10 px-3 py-2 text-xs font-medium text-primary hover:bg-primary/20 transition-colors mt-auto"
-                      @click="$emit('open-booking')"
-                    >
-                      {{ formula.cta }}
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <!-- En-tête de la formule -->
+          <div :class="[
+            'p-4',
+            formula.title === 'Premium' ? 'bg-primary/20' : 'bg-primary/5'
+          ]">
+            <div>
+              <h4 class="text-base font-semibold text-secondary">{{ formula.title }}</h4>
+              <p class="text-xs text-secondary/70 mt-1">{{ formula.subtitle }}</p>
             </div>
           </div>
-
-          <!-- Pagination du carrousel -->
-          <div class="flex justify-center mt-4 space-x-2">
-            <button
-              v-for="(_, index) in coachingFormulas"
-              :key="index"
-              @click="activeSlide = index"
-              class="w-2.5 h-2.5 rounded-full transition-colors duration-200"
-              :class="index === activeSlide ? 'bg-primary' : 'bg-primary/30'"
-              :aria-label="`Voir la formule ${index + 1}`"
-            ></button>
-          </div>
           
-          <!-- Boutons de navigation (optionnels) -->
-          <button 
-            class="absolute top-1/2 left-0 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md"
-            @click="prevSlide"
-            aria-label="Formule précédente"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button 
-            class="absolute top-1/2 right-0 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md"
-            @click="nextSlide"
-            aria-label="Formule suivante"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+          <!-- Contenu de la formule -->
+          <div class="p-4 flex flex-col flex-grow">
+            <div class="mb-3">
+              <div v-if="formula.price">
+                <span class="text-xl font-bold text-secondary">{{ formula.price }}</span>
+                <span class="text-xs text-secondary/70"> HT</span>
+              </div>
+              <div v-else>
+                <span class="text-xl font-bold text-secondary">Sur demande</span>
+              </div>
+            </div>
+            
+            <ul class="space-y-2 mb-4">
+              <li v-for="(feature, i) in formula.features" :key="i" class="flex items-start">
+                <CheckIcon class="h-3.5 w-3.5 text-primary mt-0.5 mr-1.5 flex-shrink-0" />
+                <span class="text-xs text-secondary/70">{{ feature }}</span>
+              </li>
+            </ul>
+            
+            <ContactButton
+              :service="`coaching-${formula.title.toLowerCase()}`"
+              :custom-class="'w-full rounded-md bg-primary/10 px-3 py-2 text-xs font-medium text-primary hover:bg-primary/20 transition-colors mt-auto'"
+            >
+              {{ formula.cta }}
+            </ContactButton>
+          </div>
         </div>
-        
-        <!-- Affichage en grid pour tablette et desktop -->
-        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          <div v-for="(formula, index) in coachingFormulas" :key="index" 
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination du carrousel -->
+  <div class="flex justify-center mt-4 space-x-2">
+    <button
+      v-for="(_, index) in coachingFormulas"
+      :key="index"
+      @click="activeSlide = index"
+      class="w-2.5 h-2.5 rounded-full transition-colors duration-200"
+      :class="index === activeSlide ? 'bg-primary' : 'bg-primary/30'"
+      :aria-label="`Voir la formule ${index + 1}`"
+    ></button>
+  </div>
+  
+  <!-- Boutons de navigation (optionnels) -->
+  <button 
+    class="absolute top-1/2 left-0 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md"
+    @click="prevSlide"
+    aria-label="Formule précédente"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <button 
+    class="absolute top-1/2 right-0 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md"
+    @click="nextSlide"
+    aria-label="Formule suivante"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+<!-- Affichage en grid pour tablette et desktop -->
+<div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+  <div v-for="(formula, index) in coachingFormulas" :key="index" 
     :class="[
       'bg-white/50 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col relative hover:scale-103',
       formula.title === 'Premium' ? 'ring-0 sm:scale-103 hover:scale-106' : ''
     ]">
-            <!-- Badge "Recommandé" - Correction de la bordure -->
-            <div v-if="formula.title === 'Premium'" class="absolute top-3 right-3 bg-primary text-white text-xs px-2 py-0.5 rounded-full">
-              Recommandé
-            </div>
+    <!-- Badge "Recommandé" -->
+    <div v-if="formula.title === 'Premium'" class="absolute top-3 right-3 bg-primary text-white text-xs px-2 py-0.5 rounded-full">
+      Recommandé
+    </div>
 
-            <!-- En-tête de la formule -->
-            <div :class="[
-              'p-6',
-              formula.title === 'Premium' ? 'bg-primary/20' : 'bg-primary/5'
-            ]">
-              <div>
-                <h4 class="text-lg font-semibold text-secondary">{{ formula.title }}</h4>
-                <p class="text-sm text-secondary/70 mt-1">{{ formula.subtitle }}</p>
-              </div>
-            </div>
-            
-            <!-- Contenu de la formule -->
-            <div class="p-6 flex flex-col flex-grow">
-              <div class="mb-4">
-                <div v-if="formula.price">
-                  <span class="text-2xl font-bold text-secondary">{{ formula.price }}</span>
-                  <span class="text-sm text-secondary/70"> HT</span>
-                </div>
-                <div v-else>
-                  <span class="text-2xl font-bold text-secondary">Sur demande</span>
-                </div>
-              </div>
-              
-              <ul class="space-y-3 mb-6">
-                <li v-for="(feature, i) in formula.features" :key="i" class="flex items-start">
-                  <CheckIcon class="h-4 w-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
-                  <span class="text-sm text-secondary/70">{{ feature }}</span>
-                </li>
-              </ul>
-              
-              <button
-                type="button"
-                class="w-full rounded-md bg-primary/10 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/20 transition-colors mt-auto"
-                @click="$emit('open-booking')"
-              >
-                {{ formula.cta }}
-              </button>
-            </div>
-          </div>
+    <!-- En-tête de la formule -->
+    <div :class="[
+      'p-6',
+      formula.title === 'Premium' ? 'bg-primary/20' : 'bg-primary/5'
+    ]">
+      <div>
+        <h4 class="text-lg font-semibold text-secondary">{{ formula.title }}</h4>
+        <p class="text-sm text-secondary/70 mt-1">{{ formula.subtitle }}</p>
+      </div>
+    </div>
+    
+    <!-- Contenu de la formule -->
+    <div class="p-6 flex flex-col flex-grow">
+      <div class="mb-4">
+        <div v-if="formula.price">
+          <span class="text-2xl font-bold text-secondary">{{ formula.price }}</span>
+          <span class="text-sm text-secondary/70"> HT</span>
+        </div>
+        <div v-else>
+          <span class="text-2xl font-bold text-secondary">Sur demande</span>
         </div>
       </div>
+      
+      <ul class="space-y-3 mb-6">
+        <li v-for="(feature, i) in formula.features" :key="i" class="flex items-start">
+          <CheckIcon class="h-4 w-4 text-primary mt-0.5 mr-2 flex-shrink-0" />
+          <span class="text-sm text-secondary/70">{{ feature }}</span>
+        </li>
+      </ul>
+      
+      <ContactButton
+        :service="`coaching-${formula.title.toLowerCase()}`"
+        :custom-class="'w-full rounded-md bg-primary/10 px-3 py-2 text-sm font-medium text-primary hover:bg-primary/20 transition-colors mt-auto'"
+      >
+        {{ formula.cta }}
+      </ContactButton>
+    </div>
+  </div>
+</div>
+</div>
 
       <!-- CTA -->
-      <div class="mt-8 sm:mt-10 lg:mt-12 flex justify-center">
-        <button
-          type="button"
-          class="group relative rounded-full bg-secondary px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-sm hover:bg-secondary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
-          @click="$emit('open-booking')"
+  <div class="mt-8 sm:mt-10 lg:mt-12 flex justify-center">
+        <ContactButton
+          :service="'coaching'"
+          :rounded="true"
+          :primary="false"
+          variant="solid"
+          class="group relative px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold"
         >
           <span class="block transition-opacity duration-300 group-hover:opacity-0">
             Réserver un appel découverte
@@ -223,7 +223,7 @@
           <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             Discuter de mon projet →
           </span>
-        </button>
+        </ContactButton>
       </div>
     </div>
   </div>
