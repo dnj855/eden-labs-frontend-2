@@ -5,11 +5,11 @@
       <NuxtPage />
     </main>
     <CTANewsletter v-if="!isLegalMentionsPage" />
-    <BookingCTA
-      v-if="!isLegalMentionsPage"
-      ref="bookingSection"
-      @submit-booking="submitBooking"
-    />
+  <BookingCTA
+    v-if="!isLegalMentionsPage"
+    ref="bookingCTA"
+    @form-submit-success="openBookingModal"
+  />
     <footer class="bg-light">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -57,7 +57,7 @@
     </footer>
   </div>
   <TransitionRoot appear :show="showBookingModal" as="template">
-      <Dialog as="div" @close="showBookingModal = false" class="relative z-50" :initialFocus="bookingModalInitialFocus">
+      <Dialog as="div" @close="closeBookingModal" class="relative z-50" :initialFocus="bookingModalInitialFocus">
         <TransitionChild
           as="template"
           enter="duration-300 ease-out"
@@ -86,7 +86,7 @@
                   <button
                     type="button"
                     class="text-secondary/50 hover:text-secondary focus:outline-none focus:ring-2 focus:ring-primary"
-                    @click="showBookingModal = false"
+                    @click="closeBookingModal"
                   >
                     <span class="sr-only">Fermer</span>
                     <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -107,7 +107,7 @@
                     ref="bookingModalInitialFocus"
                     type="button"
                     class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm sm:text-base font-medium text-secondary hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    @click="showBookingModal = false"
+                    @click="closeBookingModal"
                   >
                     Compris, merci !
                   </button>
@@ -124,6 +124,23 @@
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue';
 import { XMarkIcon } from '@heroicons/vue/24/outline';
 import { useRoute } from 'vue-router';
+import BookingCTA from '~/components/BookingCTA.vue';
+
+interface NavigationItem {
+  path: string;
+  name: string;
+  // Ajoutez d'autres propriétés si nécessaire
+}
+
+// Définir l'interface pour la réponse de l'API
+interface NavigationResponse {
+  data: {
+    data: NavigationItem[];
+    // Ajoutez d'autres propriétés si nécessaire
+  };
+}
+
+type BookingCTAInstance = InstanceType<typeof BookingCTA>;
 
 const route = useRoute()
 const isLegalMentionsPage = computed(() => route.path === '/legal-mentions')
@@ -139,12 +156,16 @@ function openBookingModal() {
 }
 
 const showBookingModal = ref(false)
+const bookingCTA = ref<BookingCTAInstance | null>(null);
 const bookingModalInitialFocus = ref<HTMLButtonElement | null>(null)
 
-function submitBooking(formData: any) {
-  // TODO: Implémenter la soumission du formulaire
-  console.log('Soumission du formulaire:', formData)
-  openBookingModal()
+function closeBookingModal() {
+  showBookingModal.value = false
+  
+  // Réinitialiser le formulaire
+  if (bookingCTA.value) {
+    bookingCTA.value.resetForm()
+  }
 }
 
 </script> 
