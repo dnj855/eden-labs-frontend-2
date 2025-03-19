@@ -38,18 +38,17 @@
 
             <!-- CTAs -->
             <div class="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
-              <button
+              <CalButton
                 class="flex items-center justify-center rounded-md border-2 border-primary bg-primary px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-secondary hover:bg-primary-light hover:border-primary-light transition-colors duration-200 md:py-3 lg:py-4 md:text-lg lg:px-10"
-                @click="$emit('openBooking')"
               >
-                Réserver mon audit flash gratuit
-              </button>
-              <button
+                Réserver un appel découverte gratuit
+              </CalButton>
+              <NuxtLink
                 class="flex items-center justify-center rounded-md border-2 border-light bg-transparent px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-light hover:bg-light hover:text-secondary transition-colors duration-200 md:py-3 lg:py-4 md:text-lg lg:px-10"
-                @click="$emit('openSolutions')"
+                to="/services"
               >
                 Découvrir nos solutions
-              </button>
+              </NuxtLink>
             </div>
 
             <!-- Démo vidéo -->
