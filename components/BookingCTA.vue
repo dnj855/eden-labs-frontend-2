@@ -50,46 +50,31 @@
                 </span>
               </div>
             </div>
-
-            <!-- Témoignage
-            <div class="mt-6 sm:mt-8 border-t border-secondary/10 pt-6 sm:pt-8">
-              <blockquote>
-                <div class="relative text-sm sm:text-base lg:text-lg text-secondary/80">
-                  <ChatBubbleLeftIcon class="absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-6 w-6 sm:h-8 sm:w-8 text-secondary/20" />
-                  <p class="relative pl-2 sm:pl-4 font-body">
-                    L'audit nous a permis d'identifier rapidement les opportunités d'IA les plus pertinentes pour notre entreprise.
-                  </p>
-                </div>
-                <footer class="mt-3 sm:mt-4">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                      <img
-                        class="h-8 w-8 sm:h-10 sm:w-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="Marie Lambert"
-                      />
-                    </div>
-                    <div class="ml-3">
-                      <div class="text-sm sm:text-base font-headers font-medium text-secondary">
-                        Marie Lambert
-                      </div>
-                      <div class="text-xs sm:text-sm font-body text-secondary/60">
-                        Directrice Générale, PME+
-                      </div>
-                    </div>
-                  </div>
-                </footer>
-              </blockquote>
-            </div>
-            -->
           </div>
 
           <div class="py-6 px-5 sm:px-6 sm:py-8 bg-light lg:px-8 lg:py-12 border-t lg:border-t-0 lg:border-l border-secondary/10">
             <form @submit.prevent="submitForm" class="space-y-4 sm:space-y-6">
+              <!-- Message d'erreur -->
+              <div v-if="formError" class="rounded-md bg-red-50 p-4">
+                <div class="flex">
+                  <div class="flex-shrink-0">
+                    <XCircleIcon class="h-5 w-5 text-red-400" aria-hidden="true" />
+                  </div>
+                  <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">
+                      Une erreur est survenue
+                    </h3>
+                    <div class="mt-2 text-sm text-red-700">
+                      <p>{{ formError }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!-- Nom -->
               <div>
                 <label for="name" class="block text-sm font-headers font-medium text-secondary">
-                  Nom complet
+                  Nom complet <span class="text-red-500">*</span>
                 </label>
                 <div class="mt-1">
                   <input
@@ -106,7 +91,7 @@
               <!-- Email -->
               <div>
                 <label for="email" class="block text-sm font-headers font-medium text-secondary">
-                  Email professionnel
+                  Email professionnel <span class="text-red-500">*</span>
                 </label>
                 <div class="mt-1">
                   <input
@@ -125,7 +110,7 @@
                 <!-- Entreprise -->
                 <div>
                   <label for="company" class="block text-sm font-headers font-medium text-secondary">
-                    Entreprise
+                    Entreprise <span class="text-red-500">*</span>
                   </label>
                   <div class="mt-1">
                     <input
@@ -142,7 +127,7 @@
                 <!-- Secteur -->
                 <div>
                   <label for="sector" class="block text-sm font-headers font-medium text-secondary">
-                    Secteur d'activité
+                    Secteur d'activité <span class="text-red-500">*</span>
                   </label>
                   <div class="mt-1">
                     <select
@@ -181,9 +166,14 @@
               <div>
                 <button
                   type="submit"
-                  class="w-full flex justify-center bg-gradient-to-r from-secondary to-tertiary text-primary px-3 py-2 md:px-4 md:py-4 rounded-md text-sm font-headers font-medium hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+                  class="w-full flex justify-center items-center bg-gradient-to-r from-secondary to-tertiary text-primary px-3 py-2 md:px-4 md:py-4 rounded-md text-sm font-headers font-medium hover:from-secondary/90 hover:to-tertiary/90 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+                  :disabled="isSubmitting"
                 >
-                  Réserver mon audit gratuit
+                  <svg v-if="isSubmitting" class="animate-spin -ml-1 mr-3 h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  {{ isSubmitting ? 'Envoi en cours...' : 'Réserver mon audit' }}
                 </button>
                 <p class="mt-2 sm:mt-3 text-xs sm:text-sm font-body text-secondary/60 text-center">
                   Réponse garantie sous 24h
@@ -198,7 +188,7 @@
 </template>
 
 <script setup lang="ts">
-import { ChatBubbleLeftIcon, CheckCircleIcon } from '@heroicons/vue/24/outline'
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
 
 const sectors = [
@@ -219,10 +209,97 @@ const form = ref({
   message: ''
 })
 
-function submitForm() {
-  // Émettre l'événement avec les données du formulaire
-  emit('submitBooking', form.value)
+const isSubmitting = ref(false)
+const formError = ref('')
+const formSuccess = ref(false)
+
+async function submitForm() {
+  formError.value = ''
+  isSubmitting.value = true
+  
+  // Validation basique
+  if (!form.value.name || !form.value.email || !form.value.company || !form.value.sector) {
+    formError.value = 'Veuillez remplir tous les champs obligatoires'
+    isSubmitting.value = false
+    return
+  }
+  
+  // Validation email basique
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailRegex.test(form.value.email)) {
+    formError.value = 'Veuillez entrer une adresse email valide'
+    isSubmitting.value = false
+    return
+  }
+  
+  try {
+    // Pour l'environnement de développement, on peut envelopper ceci dans une vérification
+    // afin de simuler différents comportements selon les besoins
+    
+    // Option 1: Pour le développement, on peut simuler une réponse en utilisant setTimeout
+    if (process.env.NODE_ENV === 'development' && window.location.hostname === 'localhost') {
+      // Simuler un délai
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      // Simuler un cas de succès ou d'échec selon le comportement souhaité pour les tests
+      const simulateSuccess = true; // Changez à false pour simuler un échec
+      
+      if (simulateSuccess) {
+        // Simuler un succès
+        emit('formSubmitSuccess');
+      } else {
+        // Simuler une erreur
+        throw new Error('Simulation d\'erreur pour tests');
+      }
+    } 
+    // Option 2: Pour la production, utiliser fetch normal
+    else {
+      const response = await fetch('https://n8n.eden-labs.fr/webhook-test/51280014-7fe0-46fb-a5b4-05eda669898e', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Ne pas utiliser no-cors pour pouvoir détecter les erreurs
+        body: JSON.stringify({
+          ...form.value,
+          source: 'site-web',
+          date: new Date().toISOString()
+        })
+      });
+      
+      // Vérifier si la réponse est OK
+      if (!response.ok) {
+        throw new Error(`Erreur serveur: ${response.status} ${response.statusText}`);
+      }
+      
+      // Si on arrive ici, c'est que tout s'est bien passé
+      emit('formSubmitSuccess');
+    }
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi du formulaire:', error);
+    formError.value = 'Une erreur est survenue lors de la connexion au serveur. Veuillez réessayer ultérieurement.';
+    isSubmitting.value = false;
+  }
 }
 
-const emit = defineEmits(['submitBooking'])
+// Exposer une méthode pour réinitialiser le formulaire
+function resetForm() {
+  form.value = {
+    name: '',
+    email: '',
+    company: '',
+    sector: '',
+    message: ''
+  }
+  formError.value = ''
+  formSuccess.value = false
+  isSubmitting.value = false
+}
+
+// Exposer la méthode pour le parent
+defineExpose({
+  resetForm
+})
+
+const emit = defineEmits(['formSubmitSuccess'])
 </script>
