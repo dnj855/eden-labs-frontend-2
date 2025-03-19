@@ -54,20 +54,13 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-4"
     >
-      <button 
-        v-show="showScrollTopButton" 
-        @click="scrollToTop"
-        class="fixed bottom-6 right-6 z-40 p-2 bg-secondary/80 hover:bg-secondary text-light rounded-full shadow-lg transition-all duration-300"
-        aria-label="Retour en haut de page"
-      >
-        <ArrowUpIcon class="h-5 w-5" />
-      </button>
+    <ScrollTopButton :show="showScrollTopButton" />
+
     </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpIcon } from '@heroicons/vue/24/outline'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onBeforeUnmount, onMounted, ref } from 'vue'

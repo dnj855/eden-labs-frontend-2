@@ -168,20 +168,12 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 translate-y-4"
     >
-      <button 
-        v-show="showScrollTopButton" 
-        @click="scrollToTop"
-        class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 p-2.5 sm:p-3 bg-primary text-light rounded-full shadow-lg transition-all duration-300 hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        aria-label="Retour en haut de page"
-      >
-        <ArrowUpIcon class="h-4 w-4 sm:h-5 sm:w-5" />
-      </button>
+      <ScrollTopButton :show="showScrollTopButton" />
     </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ArrowUpIcon } from '@heroicons/vue/24/outline'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
@@ -450,19 +442,6 @@ section > div {
 
 .font-headers:hover::after {
   width: 60px;
-}
-
-/* Bouton retour en haut amélioré */
-button[aria-label="Retour en haut de page"] {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
-}
-
-button[aria-label="Retour en haut de page"]:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* Masquage du parallaxe sur mobile */
