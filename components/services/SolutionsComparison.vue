@@ -102,7 +102,7 @@
       <!-- Note explicative -->
       <div class="mt-6 sm:mt-8 text-center">
         <p class="text-xs sm:text-sm text-secondary/70 italic">
-          Besoin d'aide pour choisir ? <button @click="$emit('open-booking')" class="text-primary hover:underline">Contactez-nous</button> pour un conseil personnalisé.
+          Besoin d'aide pour choisir ? <ContactButton :custom-class="'text-primary hover:underline cursor-pointer'">Contactez-nous</ContactButton> pour un conseil personnalisé.
         </p>
       </div>
 
@@ -142,9 +142,11 @@
                 <span class="text-xs sm:text-sm text-secondary/80">1 atelier thématique personnalisé (0,5 jour)</span>
               </li>
             </ul>
-            <button @click="$emit('open-booking')" class="mt-4 sm:mt-6 w-full rounded-md bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-primary/90">
+            <ContactButton
+            :service="'pack-essentiel'"
+            :custom-class="'mt-4 sm:mt-6 w-full rounded-md bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-primary/90'">
               Réserver ce pack
-            </button>
+            </ContactButton>
           </div>
 
           <!-- Pack Accélération -->
@@ -182,9 +184,11 @@
                 <span class="text-xs sm:text-sm text-secondary/80">1 mois de coaching personnalisé (5h)</span>
               </li>
             </ul>
-            <button @click="$emit('open-booking')" class="mt-4 sm:mt-6 w-full rounded-md bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-primary/90">
+            <ContactButton
+            :service="'pack-acceleration'"
+            :custom-class="'mt-4 sm:mt-6 w-full rounded-md bg-primary px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-white hover:bg-primary/90'">
               Réserver ce pack
-            </button>
+            </ContactButton>
           </div>
         </div>
       </div>
