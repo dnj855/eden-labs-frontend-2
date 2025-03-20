@@ -1,0 +1,18 @@
+services:
+  nuxt-app:
+    build: .
+    image: clangroth/eden-labs:latest
+    container_name: nuxt-app
+    restart: always
+    env_file:
+      - .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nuxt-test.rule=Host(`test.eden-labs.fr`)"
+      - "traefik.http.routers.nuxt-test.entrypoints=websecure"
+      - "traefik.http.routers.nuxt-test.tls=true"
+      - "traefik.http.routers.nuxt-test.tls.certresolver=myresolver"
+      - "traefik.http.services.nuxt-test.loadbalancer.server.port=3000"
+      - "traefik.http.routers.nuxt-test.middlewares=authelia@docker"
+    ports:
+      - "3000:3000"  # Permet de tester en local (optionnel si vous utilisez Traefik pour rediriger)

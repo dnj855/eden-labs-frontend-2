@@ -127,8 +127,19 @@ const isOpen = ref(false)
 
 const baseUrl = useRuntimeConfig().public.strapiUrl;
 const { $api } = useNuxtApp();
-const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
-const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
+const navigationItems = ref<{ path: string; name: string }[]>([]);
+
+try {
+  const { data, error } = await $api.fetch(baseUrl + '/api/Navigation-Item');
+
+  if (error.value) {
+    console.error('Erreur API détectée :', error.value);
+  } else {
+    navigationItems.value = (data.value as NavigationResponse)?.data?.data || [];
+  }
+} catch (e) {
+  console.error('Exception lors de la récupération de l’API :', e);
+}
 
 
 // Fermer le menu quand l'écran devient large
