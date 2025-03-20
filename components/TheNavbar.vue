@@ -126,7 +126,7 @@ interface NavigationResponse {
 const isOpen = ref(false)
 
 const baseUrl = useRuntimeConfig().public.strapiUrl;
-console.log("URL: " + baseUrl)
+console.log(useRuntimeConfig())
 const { $api } = useNuxtApp();
 const navigationItems = ref<{ path: string; name: string }[]>([]);
 
