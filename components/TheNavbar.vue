@@ -114,6 +114,10 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 
+// Ajouter avant la récupération des données
+console.log('STRAPI_URL:', useRuntimeConfig().public.strapiUrl);
+console.log('STRAPI_API_TOKEN existe:', !!useRuntimeConfig().public.strapiApiToken);
+
 interface NavigationItem {
   path: string;
   name: string;
