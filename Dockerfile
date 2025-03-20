@@ -15,6 +15,10 @@ RUN pnpm install --frozen-lockfile
 # Copie du reste du code source
 COPY . .
 
+# Ajout d'une variable d'environnement pour désactiver le prérendu si nécessaire
+ENV NITRO_PRESET=node-server
+ENV NUXT_PRERENDER=false
+
 # Build de l'application
 RUN pnpm run build
 
@@ -27,16 +31,12 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 # Copie des fichiers nécessaires depuis l'étape de build
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/.nuxt ./.nuxt
+COPY --from=build /app/.output ./.output
 COPY --from=build /app/package.json ./
 COPY --from=build /app/pnpm-lock.yaml ./
-COPY --from=build /app/nuxt.config.js ./
-# Si vous utilisez des fichiers statiques ou d'autres assets
-COPY --from=build /app/public ./public
 
 # Exposer le port 3000
 EXPOSE 3000
 
 # Commande pour démarrer l'application
-CMD ["pnpm", "start"]
+CMD ["node", ".output/server/index.mjs"]

@@ -43,19 +43,6 @@ export default defineNuxtConfig({
     '/resources/**': { isr: 3600 }
   },
 
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-        '/services',
-        '/about',
-        '/resources',
-        '/blog'
-      ]
-    }
-  },
-
   experimental: {
     payloadExtraction: true
   },
