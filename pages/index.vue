@@ -76,8 +76,7 @@ import SectorSolutionsComponent from '~/components/home/SectorSolutions.vue'
 import TestimonialsComponent from '~/components/home/Testimonials.vue'
 import TheHeroComponent from '~/components/home/TheHero.vue'
 
-// Enregistrement du plugin ScrollTrigger
-gsap.registerPlugin(ScrollTrigger)
+const { $gsap, $ScrollTrigger } = useNuxtApp();
 
 // Refs pour les sections
 const solutionsSection = ref<InstanceType<typeof ProblemsSolutionsComponent> | null>(null)
@@ -116,7 +115,7 @@ onMounted(() => {
     const heroStats = heroEl.querySelector('.stats')
     
     if (heroTitle) {
-      gsap.from(heroTitle, {
+      $gsap.from(heroTitle, {
         y: defaultDistance,
         opacity: 0,
         duration: defaultDuration,
@@ -125,7 +124,7 @@ onMounted(() => {
     }
 
     if (heroStats) {
-      gsap.from(heroStats, {
+      $gsap.from(heroStats, {
         y: defaultDistance * 0.6,
         opacity: 0,
         duration: defaultDuration,
@@ -147,7 +146,7 @@ onMounted(() => {
     ].filter((section): section is HTMLElement => section !== undefined && section !== null)
 
     sections.forEach((section) => {
-      gsap.from(section, {
+      $gsap.from(section, {
         scrollTrigger: {
           trigger: section,
           start: 'top 85%',
