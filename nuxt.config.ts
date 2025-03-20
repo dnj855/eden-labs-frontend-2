@@ -51,5 +51,8 @@ export default defineNuxtConfig({
       strapiUrl: process.env.STRAPI_URL,
       strapiApiToken: process.env.STRAPI_API_TOKEN
     }
-  }
+  },
+  plugins: [
+    '~/plugins/gsap.client.ts'
+  ]
 })
