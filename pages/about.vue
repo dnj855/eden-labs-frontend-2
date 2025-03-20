@@ -174,13 +174,12 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-import AboutHeroComponent from '~/components/about/AboutHero.vue'
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import AboutHeroComponent from '~/components/about/AboutHero.vue';
 
-// Enregistrement du plugin ScrollTrigger
-gsap.registerPlugin(ScrollTrigger)
+const { $gsap, $ScrollTrigger } = useNuxtApp();
 
 // Refs pour les sections
 const heroSection = ref<InstanceType<typeof AboutHeroComponent> | null>(null)
@@ -236,7 +235,7 @@ onMounted(() => {
   const heroSubtitle = document.querySelector('h1 + p')
   
   if (heroTitle && !prefersReducedMotion) {
-    gsap.from(heroTitle, {
+    $gsap.from(heroTitle, {
       y: defaultDistance,
       opacity: 0,
       duration: defaultDuration,
@@ -245,7 +244,7 @@ onMounted(() => {
   }
 
   if (heroSubtitle && !prefersReducedMotion) {
-    gsap.from(heroSubtitle, {
+    $gsap.from(heroSubtitle, {
       y: defaultDistance * 0.6,
       opacity: 0,
       duration: defaultDuration,
@@ -266,7 +265,7 @@ onMounted(() => {
     ].filter((section): section is HTMLElement => section !== null)
 
     sections.forEach((section) => {
-      gsap.from(section, {
+      $gsap.from(section, {
         scrollTrigger: {
           trigger: section,
           start: 'top 85%',

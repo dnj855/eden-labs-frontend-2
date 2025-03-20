@@ -124,12 +124,11 @@ interface NavigationResponse {
 }
 
 const isOpen = ref(false)
-const navigationItems = ref([]);
 
-// const baseUrl = "https://api.eden-labs.fr";
-// const { $api } = useNuxtApp();
-// const { data } = await $api.fetch(`${baseUrl}/api/Navigation-Item`);
-// const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
+const baseUrl = useRuntimeConfig().public.strapiUrl;
+const { $api } = useNuxtApp();
+const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
+const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
 
 
 // Fermer le menu quand l'écran devient large
@@ -165,49 +164,7 @@ const handleEscape = (e: { key: string; }) => {
 onMounted(async() => {
   window.addEventListener('resize', checkScreenSize)
   document.addEventListener('keydown', handleEscape)
-  
-  // Définition des éléments de navigation par défaut
-  const defaultNavItems = [
-    { path: '/', name: 'Accueil' },
-    { path: '/services', name: 'Solutions' },
-    { path: '/about', name: 'À propos' }
-  ];
-  
-  // Chargement des éléments de navigation depuis l'API
-  await loadNavigationItems(defaultNavItems);
 })
-
-/**
- * Charge les éléments de navigation depuis l'API Strapi
- * @param {Array} fallbackItems - Éléments de navigation par défaut en cas d'échec
- */
-async function loadNavigationItems(fallbackItems) {
-  try {
-    const { $api } = useNuxtApp();
-    const { data, error } = await $api.fetch('/api/Navigation-Item');
-    
-    if (error.value) {
-      throw new Error(`Échec de la requête API: ${error.value.message}`);
-    }
-    
-    // Vérification plus souple de la structure des données
-    if (data.value) {
-      // Essayer différentes structures possibles
-      const navItems = data.value.data?.data || data.value.data || data.value;
-      
-      if (Array.isArray(navItems) && navItems.length > 0) {
-        navigationItems.value = navItems;
-        return;
-      }
-    }
-    
-    // Si on arrive ici, c'est que la structure n'est pas reconnue
-    navigationItems.value = fallbackItems;
-    
-  } catch (error) {
-    navigationItems.value = fallbackItems;
-  }
-}
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', checkScreenSize)

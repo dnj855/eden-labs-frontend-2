@@ -219,7 +219,7 @@ import OffresHeroComponent from '~/components/services/ServicesHero.vue'
 import SolutionsComparisonComponent from '~/components/services/SolutionsComparison.vue'
 
 // Enregistrement du plugin ScrollTrigger
-gsap.registerPlugin(ScrollTrigger)
+const { $gsap, $ScrollTrigger } = useNuxtApp();
 
 // Refs pour les sections
 const heroSection = ref<InstanceType<typeof OffresHeroComponent> | null>(null)
@@ -301,7 +301,7 @@ onMounted(() => {
     const heroContent = heroEl.querySelector('.hero-content')
     
     if (heroTitle) {
-      gsap.from(heroTitle, {
+      $gsap.from(heroTitle, {
         y: distance,
         opacity: 0,
         duration,
@@ -310,7 +310,7 @@ onMounted(() => {
     }
 
     if (heroContent) {
-      gsap.from(heroContent, {
+      $gsap.from(heroContent, {
         y: distance * 0.6,
         opacity: 0,
         duration,
@@ -341,7 +341,7 @@ onMounted(() => {
       const triggerEnd = isMobile.value ? 'top 10%' : 'top 15%'
       
       if (sectionTitle) {
-        gsap.from(sectionTitle, {
+        $gsap.from(sectionTitle, {
           scrollTrigger: {
             trigger: section,
             start: triggerStart,
@@ -356,7 +356,7 @@ onMounted(() => {
       }
       
       if (sectionContent.length) {
-        gsap.from(sectionContent, {
+        $gsap.from(sectionContent, {
           scrollTrigger: {
             trigger: section,
             start: triggerStart,
@@ -374,7 +374,7 @@ onMounted(() => {
       
       // Effet de parallaxe subtil - réduit sur mobile
       if (!isMobile.value && index % 2 === 0) {
-        gsap.to(section, {
+        $gsap.to(section, {
           scrollTrigger: {
             trigger: section,
             start: 'top bottom',

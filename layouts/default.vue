@@ -164,14 +164,11 @@ type BookingCTAInstance = InstanceType<typeof BookingCTA>;
 const route = useRoute()
 const isLegalMentionsPage = computed(() => route.path === '/legal-mentions')
 
-// Utiliser le plugin Strapi pour charger les éléments de navigation
+const baseUrl = useRuntimeConfig().public.strapiUrl;
+
 const { $api } = useNuxtApp();
-const { data: navigationData } = await $api.fetch('/api/Navigation-Item');
-const navigationItems = computed(() => {
-  if (!navigationData.value) return [];
-  const items = (navigationData.value as NavigationResponse)?.data?.data || [];
-  return Array.isArray(items) ? items : [];
-});
+const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
+const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
 
 function openBookingModal() {
   showBookingModal.value = true
