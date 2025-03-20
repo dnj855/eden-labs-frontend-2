@@ -1,6 +1,5 @@
 export default defineNuxtPlugin(() => {
   const token = useRuntimeConfig().public.strapiApiToken;
-  console.log(token)
 
   const useApiFetch = (url: string, options: any = {}) => {
     return useFetch(url, {
