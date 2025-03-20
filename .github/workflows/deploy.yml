@@ -12,6 +12,9 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    env:
+      STRAPI_URL: ${{ secrets.STRAPI_URL }}
+      STRAPI_API_TOKEN: ${{ secrets.STRAPI_API_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -32,3 +35,6 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/${{ github.repository }}:latest
+          build-args: |
+            STRAPI_URL=${{ secrets.STRAPI_URL }}
+            STRAPI_API_TOKEN=${{ secrets.STRAPI_API_TOKEN }}

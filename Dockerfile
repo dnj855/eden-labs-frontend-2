@@ -25,6 +25,13 @@ RUN pnpm run build
 # Étape de production
 FROM node:18-alpine AS production
 
+ARG STRAPI_URL
+ARG STRAPI_API_TOKEN
+
+# Définir les variables d'environnement
+ENV STRAPI_URL=$STRAPI_URL
+ENV STRAPI_API_TOKEN=$STRAPI_API_TOKEN
+
 # Installation de pnpm
 RUN npm install -g pnpm
 
