@@ -46,12 +46,6 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: true
   },
-  runtimeConfig: {
-public: {
-      strapiUrl: process.env.NUXT_PUBLIC_STRAPI_URL || '',
-      strapiApiToken: process.env.NUXT_PUBLIC_STRAPI_API_TOKEN || ''
-    }
-  },
   plugins: [
     '~/plugins/gsap.client.ts'
   ]

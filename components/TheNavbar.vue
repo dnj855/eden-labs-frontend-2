@@ -114,10 +114,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 
-// Ajouter avant la récupération des données
-console.log('STRAPI_URL:', useRuntimeConfig().public.strapiUrl);
-console.log('STRAPI_API_TOKEN existe:', !!useRuntimeConfig().public.strapiApiToken);
-
 interface NavigationItem {
   path: string;
   name: string;
@@ -134,9 +130,9 @@ interface NavigationResponse {
 
 const isOpen = ref(false)
 
-const baseUrl = useRuntimeConfig().public.strapiUrl;
+const baseUrl = "https://api.eden-labs.fr";
 const { $api } = useNuxtApp();
-const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
+const { data } = await $api.fetch(`${baseUrl}/api/Navigation-Item`);
 const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
 
 

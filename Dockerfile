@@ -14,14 +14,6 @@ FROM node:18-alpine AS production
 RUN npm install -g pnpm
 WORKDIR /app
 
-# Définir des variables d'environnement par défaut qui seront remplacées au runtime
-ENV STRAPI_URL=""
-ENV STRAPI_API_TOKEN=""
-
-# Ces variables avec préfixe NUXT_PUBLIC_ seront accessibles par Nuxt au runtime
-ENV NUXT_PUBLIC_STRAPI_URL=${STRAPI_URL}
-ENV NUXT_PUBLIC_STRAPI_API_TOKEN=${STRAPI_API_TOKEN}
-
 # Copier les fichiers de build
 COPY --from=build /app/.output ./.output
 COPY --from=build /app/package.json ./
