@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Créer le dossier si nécessaire
+mkdir -p /app/.output/server/utils
+
 # Générer le fichier de configuration avec les variables d'environnement
 echo "export default {
   strapiUrl: '${STRAPI_URL}',

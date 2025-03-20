@@ -9,9 +9,6 @@ ENV NITRO_PRESET=node-server
 ENV NUXT_PRERENDER=false
 RUN pnpm run build
 
-RUN mkdir -p .output/server/utils
-RUN echo "export default { strapiUrl: '', strapiApiToken: '' };" > .output/server/utils/runtime-config.mjs
-
 # Étape de production
 FROM node:18-alpine AS production
 RUN npm install -g pnpm
