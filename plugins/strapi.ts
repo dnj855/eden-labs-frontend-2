@@ -1,17 +1,35 @@
-// plugins/strapi.ts
 export default defineNuxtPlugin(() => {
-  const token = "cc6094f2df1d029bd58adfc913d84bd8203573fb4444ab579d6f488bcebd0d1d7287ec6acdc036e254f60eef7d4bf94bc470e9e1bc14ada6e30dd6e70fbc32204ab6939f114dd39f15f777c49f6c3d3d26f40d6bfb1b228817b1cc9a2e9d13d9e08de1e8b133685ba59c1d80366cb6985c4c170fe960da4da5edf7e7788a0527";
+  // Configuration par défaut
+  let token = '';
+  let baseUrl = '';
   
+  // Essayer d'abord les variables d'environnement runtime
+  const config = useRuntimeConfig();
+
+  if (config.public.strapiApiToken && config.public.strapiUrl) {
+    token = String(config.public.strapiApiToken);
+    baseUrl = String(config.public.strapiUrl);
+  } else {
+    // En développement, utiliser les variables d'environnement locales
+    if (process.env.NODE_ENV === 'development') {
+      baseUrl = process.env.STRAPI_URL || 'http://localhost:1337';
+      token = process.env.STRAPI_API_TOKEN || '';
+    } else {
+      // En production, utiliser les variables d'environnement de production
+      baseUrl = process.env.STRAPI_URL || '';
+      token = process.env.STRAPI_API_TOKEN || '';
+    }
+  }
+
   const useApiFetch = (url: string, options: any = {}) => {
-    const fullUrl = url.startsWith('http') ? url : 'https://api.eden-labs.fr' + url;
-    
-    console.log(`Requête vers ${fullUrl}`);
+    // Si l'URL ne commence pas par http, ajouter l'URL de base
+    const fullUrl = url.startsWith('http') ? url : (baseUrl + url);
     
     return useFetch(fullUrl, {
       ...options,
       headers: {
         Authorization: `Bearer ${token}`,
-        ...options.headers,
+        ...options.headers
       }
     });
   };
