@@ -5,14 +5,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
 
   runtimeConfig: {
-    // Variables privées (côté serveur uniquement)
-    strapiUrl: process.env.STRAPI_URL,
-    strapiApiToken: process.env.STRAPI_API_TOKEN,
     
-    // Variables publiques (côté client)
     public: {
+      strapiApiToken: process.env.STRAPI_API_TOKEN,
       strapiUrl: process.env.STRAPI_URL,
-      strapiApiToken: process.env.STRAPI_API_TOKEN
     }
   },
 
