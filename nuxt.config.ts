@@ -47,9 +47,9 @@ export default defineNuxtConfig({
     payloadExtraction: true
   },
   runtimeConfig: {
-    public: {
-      strapiUrl: process.env.STRAPI_URL,
-      strapiApiToken: process.env.STRAPI_API_TOKEN
+public: {
+      strapiUrl: process.env.NUXT_PUBLIC_STRAPI_URL || '',
+      strapiApiToken: process.env.NUXT_PUBLIC_STRAPI_API_TOKEN || ''
     }
   },
   plugins: [
