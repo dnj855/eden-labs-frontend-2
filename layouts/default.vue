@@ -164,9 +164,9 @@ type BookingCTAInstance = InstanceType<typeof BookingCTA>;
 const route = useRoute()
 const isLegalMentionsPage = computed(() => route.path === '/legal-mentions')
 
-const baseUrl = useRuntimeConfig().public.strapiUrl;
+const baseUrl = "https://api.eden-labs.fr";
 const { $api } = useNuxtApp();
-const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
+const { data } = await $api.fetch(`${baseUrl}/api/Navigation-Item`);
 const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
 
 
