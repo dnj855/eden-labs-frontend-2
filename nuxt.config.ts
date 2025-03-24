@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
 
   runtimeConfig: {
-    
+      strapiApiToken: process.env.STRAPI_API_TOKEN,
+      strapiUrl: process.env.STRAPI_URL,
     public: {
       strapiApiToken: process.env.STRAPI_API_TOKEN,
       strapiUrl: process.env.STRAPI_URL,
@@ -54,7 +55,10 @@ export default defineNuxtConfig({
   experimental: {
     payloadExtraction: true
   },
+
   plugins: [
     '~/plugins/gsap.client.ts'
-  ]
+  ],
+
+  modules: ['@nuxt/image']
 })

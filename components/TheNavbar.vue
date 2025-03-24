@@ -125,22 +125,37 @@ interface NavigationResponse {
 
 const isOpen = ref(false)
 
-const baseUrl = useRuntimeConfig().public.strapiUrl;
-console.log(useRuntimeConfig().public)
-const { $api } = useNuxtApp();
-const navigationItems = ref<{ path: string; name: string }[]>([]);
+// const baseUrl = useRuntimeConfig().public.strapiUrl;
+// console.log(useRuntimeConfig().public)
+// const { $api } = useNuxtApp();
+// const navigationItems = ref<{ path: string; name: string }[]>([]);
 
-try {
-  const { data, error } = await $api.fetch(baseUrl + '/api/Navigation-Item');
+// try {
+//   const { data, error } = await $api.fetch(baseUrl + '/api/Navigation-Item');
 
-  if (error.value) {
-    console.error('Erreur API détectée :', error.value);
-  } else {
-    navigationItems.value = (data.value as NavigationResponse)?.data?.data || [];
+//   if (error.value) {
+//     console.error('Erreur API détectée :', error.value);
+//   } else {
+//     navigationItems.value = (data.value as NavigationResponse)?.data?.data || [];
+//   }
+// } catch (e) {
+//   console.error('Exception lors de la récupération de l’API :', e);
+// }
+
+const navigationItems = [
+  {
+    name: "Accueil",
+    path: "/"
+  },
+  {
+    name: "Services",
+    path: "/services"
+  },
+  {
+    name: "À propos",
+    path: "/about"
   }
-} catch (e) {
-  console.error('Exception lors de la récupération de l’API :', e);
-}
+]
 
 
 // Fermer le menu quand l'écran devient large
