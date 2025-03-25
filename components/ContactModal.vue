@@ -380,7 +380,7 @@ async function submitForm() {
     } 
     // Pour la production, utiliser fetch vers votre API
     else {
-      const response = await fetch('https://n8n.eden-labs.fr/webhook-test/51280014-7fe0-46fb-a5b4-05eda669898e', {
+      const response = await fetch('https://n8n.eden-labs.fr/webhook/51280014-7fe0-46fb-a5b4-05eda669898e', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
