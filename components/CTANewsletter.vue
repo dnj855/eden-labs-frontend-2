@@ -31,7 +31,24 @@
                   </div>
                 </div>
 
-                <div class="flex flex-col space-y-1">
+                <!-- Message de succès -->
+                <div v-if="formSuccess" class="rounded-md bg-green-50 p-4">
+                  <div class="flex">
+                    <div class="flex-shrink-0">
+                      <CheckCircleIcon class="h-5 w-5 text-green-400" aria-hidden="true" />
+                    </div>
+                    <div class="ml-3">
+                      <h3 class="text-sm font-medium text-green-800">
+                        Inscription réussie !
+                      </h3>
+                      <div class="mt-2 text-sm text-green-700">
+                        <p>Merci de votre inscription. Vous recevrez bientôt nos actualités.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div v-if="!formSuccess" class="flex flex-col space-y-1">
                   <label for="firstName-mobile" class="text-sm font-medium text-light">Prénom</label>
                   <input
                     id="firstName-mobile"
@@ -40,7 +57,7 @@
                     class="w-full rounded-md bg-white/10 px-4 py-3 text-light focus:ring-2 focus:ring-primary"
                   />
                 </div>
-                <div class="flex flex-col space-y-1">
+                <div v-if="!formSuccess" class="flex flex-col space-y-1">
                   <label for="lastName-mobile" class="text-sm font-medium text-light">Nom</label>
                   <input
                     id="lastName-mobile"
@@ -49,7 +66,7 @@
                     class="w-full rounded-md bg-white/10 px-4 py-3 text-light focus:ring-2 focus:ring-primary"
                   />
                 </div>
-                <div class="flex flex-col space-y-1">
+                <div v-if="!formSuccess" class="flex flex-col space-y-1">
                   <label for="email-mobile" class="text-sm font-medium text-light">Email</label>
                   <input
                     id="email-mobile"
@@ -59,6 +76,7 @@
                   />
                 </div>
                 <button
+                  v-if="!formSuccess"
                   class="w-full rounded-md bg-primary px-4 py-3 font-medium text-secondary transition-colors duration-200 hover:bg-primary-light cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   @click="handleSubmit"
                   :disabled="isSubmitting"
@@ -71,6 +89,13 @@
                     Envoi en cours...
                   </span>
                   <span v-else>S'abonner</span>
+                </button>
+                <button
+                  v-else
+                  class="w-full rounded-md bg-primary px-4 py-3 font-medium text-secondary transition-colors duration-200 hover:bg-primary-light cursor-pointer"
+                  @click="resetForm"
+                >
+                  S'abonner à nouveau
                 </button>
               </div>
               
@@ -93,7 +118,24 @@
                   </div>
                 </div>
 
-                <div class="flex space-x-3">
+                <!-- Message de succès -->
+                <div v-if="formSuccess" class="rounded-md bg-green-50 p-4">
+                  <div class="flex">
+                    <div class="flex-shrink-0">
+                      <CheckCircleIcon class="h-5 w-5 text-green-400" aria-hidden="true" />
+                    </div>
+                    <div class="ml-3">
+                      <h3 class="text-sm font-medium text-green-800">
+                        Inscription réussie !
+                      </h3>
+                      <div class="mt-2 text-sm text-green-700">
+                        <p>Merci de votre inscription. Vous recevrez bientôt nos actualités.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div v-if="!formSuccess" class="flex space-x-3">
                   <div class="flex-1 flex flex-col space-y-1">
                     <label for="firstName-desktop" class="text-sm font-medium text-light">Prénom</label>
                     <input
@@ -113,7 +155,7 @@
                     />
                   </div>
                 </div>
-                <div class="flex space-x-3">
+                <div v-if="!formSuccess" class="flex space-x-3">
                   <div class="flex-1 flex flex-col space-y-1">
                     <label for="email-desktop" class="text-sm font-medium text-light">Email</label>
                     <input
@@ -140,6 +182,14 @@
                     </button>
                   </div>
                 </div>
+                <div v-else class="flex justify-center">
+                  <button
+                    class="rounded-md bg-primary px-4 py-3 font-medium text-secondary transition-colors duration-200 hover:bg-primary-light cursor-pointer"
+                    @click="resetForm"
+                  >
+                    S'abonner à nouveau
+                  </button>
+                </div>
               </div>
             </div>
             
@@ -158,7 +208,7 @@
 </template>
 
 <script setup lang="ts">
-import { XCircleIcon } from '@heroicons/vue/24/outline';
+import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline';
 import { ref } from 'vue';
 
 const emit = defineEmits<{
@@ -223,7 +273,7 @@ async function handleSubmit() {
     } 
     // Option 2: Pour la production, utiliser fetch normal
     else {
-      const response = await fetch('https://n8n.eden-labs.fr/webhook-test/596f2a3d-e8af-4b01-934d-79709f8e747c', {
+      const response = await fetch('https://n8n.eden-labs.fr/webhook/596f2a3d-e8af-4b01-934d-79709f8e747c', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
