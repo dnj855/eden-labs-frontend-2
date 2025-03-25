@@ -254,7 +254,7 @@ async function submitForm() {
     } 
     // Option 2: Pour la production, utiliser fetch normal
     else {
-      const response = await fetch('https://n8n.eden-labs.fr/webhook/596f2a3d-e8af-4b01-934d-79709f8e747c', {
+      const response = await fetch('https://n8n.eden-labs.fr/webhook-test/596f2a3d-e8af-4b01-934d-79709f8e747c', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
