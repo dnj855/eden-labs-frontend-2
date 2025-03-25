@@ -24,7 +24,7 @@
               Accompagnement sur mesure pour PME/ETI : formations, ateliers et consulting pour intégrer l'IA dans vos processus quotidiens
             </p>
             
-            <!-- Statistiques de confiance -->
+            <!-- Statistiques de confiance
             <div class="mt-6 sm:mt-8 grid grid-cols-2 gap-4 sm:flex sm:space-x-8 justify-center lg:justify-start">
               <div>
                 <p class="text-2xl sm:text-3xl font-bold text-primary">+45%</p>
@@ -34,7 +34,7 @@
                 <p class="text-2xl sm:text-3xl font-bold text-primary">50+</p>
                 <p class="mt-1 text-xs sm:text-sm text-light/70">Entreprises accompagnées</p>
               </div>
-            </div>
+            </div> -->
 
             <!-- CTAs -->
             <div class="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
@@ -58,7 +58,7 @@
                 @click="showVideo = true"
               >
                 <PlayCircleIcon class="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                <span class="text-sm sm:text-base">Voir la démo en 45 secondes</span>
+                <span class="text-sm sm:text-base">Découvrir notre offre en 1 minute</span>
               </button>
             </div>
           </div>
@@ -123,14 +123,7 @@
             >
               <DialogPanel class="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all">
                 <div class="relative aspect-video">
-                  <iframe
-                    class="absolute inset-0 w-full h-full"
-                    src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"
-                    title="Démonstration Eden Labs"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                  ></iframe>
+                  <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/B5lh97-N3bE?si=igTNCHj-e_yPX6T9&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
               </DialogPanel>
             </TransitionChild>
