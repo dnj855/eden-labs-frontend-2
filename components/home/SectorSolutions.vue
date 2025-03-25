@@ -121,11 +121,6 @@
                 <h4 class="font-headers text-base sm:text-lg font-medium text-secondary">
                   Étude de cas
                 </h4>
-                <img
-                  :src="currentSector.caseStudy.logo"
-                  :alt="currentSector.caseStudy.company"
-                  class="h-6 sm:h-8"
-                />
               </div>
               <p class="mt-3 sm:mt-4 text-sm sm:text-base text-secondary/70">
                 {{ currentSector.caseStudy.description }}
@@ -144,28 +139,6 @@
                   </p>
                 </div>
               </div>
-              <div class="mt-4 sm:mt-6">
-                <div class="flex items-start">
-                  <img
-                    :src="currentSector.caseStudy.testimonial.avatar"
-                    :alt="currentSector.caseStudy.testimonial.name"
-                    class="h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-primary"
-                  />
-                  <div class="ml-3 sm:ml-4">
-                    <p class="text-xs sm:text-sm italic text-secondary/70">
-                      "{{ currentSector.caseStudy.testimonial.quote }}"
-                    </p>
-                    <div class="mt-1">
-                      <p class="text-xs sm:text-sm font-medium text-secondary">
-                        {{ currentSector.caseStudy.testimonial.name }}
-                      </p>
-                      <p class="text-xs text-tertiary">
-                        {{ currentSector.caseStudy.testimonial.role }}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -173,20 +146,19 @@
 
       <!-- CTAs -->
       <div class="mt-8 sm:mt-10 md:mt-12 flex flex-col items-center space-y-3 sm:space-y-4">
-        <button
+        <NuxtLink
           class="w-full sm:w-auto inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-secondary shadow-sm transition-colors duration-200 hover:bg-primary-light hover:border-primary-light"
-          @click="$emit('exploreSector', activeSector)"
+          to="/services"
         >
-          <span class="sm:hidden">Explorer {{ currentSector.name }}</span>
-          <span class="hidden sm:inline">Explorer nos solutions pour {{ currentSector.name }}</span>
+          <span class="inline">Explorer toutes nos solutions</span>
           <ArrowRightIcon class="ml-2 -mr-1 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-        </button>
-        <button
-          class="text-xs sm:text-sm text-secondary/70 transition-colors duration-200 hover:text-tertiary"
-          @click="$emit('contact')"
+        </NuxtLink>
+        <ContactButton
+          class="cursor-pointer text-xs sm:text-sm text-secondary/70 transition-colors duration-200 "
+          
         >
           Votre secteur n'est pas listé ? Contactez-nous
-        </button>
+        </ContactButton>
       </div>
     </div>
   </section>
@@ -238,19 +210,11 @@ const sectors = [
       }
     ],
     caseStudy: {
-      company: 'TechCorp',
-      logo: 'https://tailwindui.com/img/logos/tuple-logo-gray-900.svg',
-      description: 'TechCorp a transformé sa stratégie marketing grâce à l\'IA générative.',
+      description: 'Découvrez comment l\'IA générative a révolutionné notre approche marketing.',
       stats: [
         { value: '3x', label: 'Plus de contenu produit' },
         { value: '-40%', label: 'De coûts marketing' }
-      ],
-      testimonial: {
-        quote: 'L\'IA nous a permis de multiplier notre production de contenu tout en maintenant une qualité constante.',
-        name: 'Sophie Martin',
-        role: 'Directrice Marketing, TechCorp',
-        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-      }
+      ]
     }
   },
   {
@@ -274,19 +238,11 @@ const sectors = [
       }
     ],
     caseStudy: {
-      company: 'IndustriePlus',
-      logo: 'https://tailwindui.com/img/logos/statickit-logo-gray-900.svg',
-      description: 'IndustriePlus a optimisé ses processus RH avec l\'IA.',
+      description: 'Optimisez vos processus RH avec l\'IA.',
       stats: [
         { value: '2x', label: 'Plus de candidats qualifiés' },
         { value: '-30%', label: 'De turnover' }
-      ],
-      testimonial: {
-        quote: 'L\'IA nous aide à identifier les meilleurs talents plus rapidement.',
-        name: 'Marc Lefevre',
-        role: 'DRH, IndustriePlus',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-      }
+      ]
     }
   },
   {
@@ -303,19 +259,11 @@ const sectors = [
       }
     ],
     caseStudy: {
-      company: 'LogiGroup',
-      logo: 'https://tailwindui.com/img/logos/transistor-logo-gray-900.svg',
-      description: 'LogiGroup a automatisé sa gestion financière.',
+      description: 'Automatisez votre gestion financière avec l\'IA.',
       stats: [
         { value: '4x', label: 'Plus rapide' },
         { value: '-60%', label: 'D\'erreurs' }
-      ],
-      testimonial: {
-        quote: 'L\'automatisation nous a permis de nous concentrer sur l\'analyse stratégique.',
-        name: 'Pierre Durand',
-        role: 'DAF, LogiGroup',
-        avatar: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-      }
+      ]
     }
   },
   {
@@ -332,19 +280,11 @@ const sectors = [
       }
     ],
     caseStudy: {
-      company: 'RetailPlus',
-      logo: 'https://tailwindui.com/img/logos/workcation-logo-gray-900.svg',
-      description: 'RetailPlus a optimisé sa force de vente avec l\'IA.',
+      description: 'Optimisez votre force de vente avec l\'IA.',
       stats: [
         { value: '+30%', label: 'De ventes' },
         { value: '+45%', label: 'De satisfaction client' }
-      ],
-      testimonial: {
-        quote: 'Nos vendeurs sont plus efficaces grâce aux insights IA.',
-        name: 'Thomas Dubois',
-        role: 'Directeur Commercial, RetailPlus',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-      }
+      ]
     }
   },
   {
@@ -361,19 +301,11 @@ const sectors = [
       }
     ],
     caseStudy: {
-      company: 'IndustrieNext',
-      logo: 'https://tailwindui.com/img/logos/level-logo-gray-900.svg',
-      description: 'IndustrieNext a optimisé sa production avec l\'IA.',
+      description: 'Optimisez votre production avec l\'IA.',
       stats: [
         { value: '-30%', label: 'De déchets' },
         { value: '+25%', label: 'D\'efficacité' }
-      ],
-      testimonial: {
-        quote: 'L\'IA nous aide à optimiser chaque étape de notre production.',
-        name: 'Jean Martin',
-        role: 'Directeur Opérations, IndustrieNext',
-        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
-      }
+      ]
     }
   }
 ]

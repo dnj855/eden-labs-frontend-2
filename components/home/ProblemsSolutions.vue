@@ -85,14 +85,14 @@
 
       <!-- CTA -->
       <div class="mt-8 sm:mt-10 md:mt-12 text-center">
-        <button
+        <NuxtLink
+          to="/services"
           class="inline-flex items-center px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 border-2 border-primary bg-primary text-sm sm:text-base font-medium rounded-md shadow-sm text-secondary hover:bg-primary-light hover:border-primary-light transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-          @click="$emit('openQualification')"
         >
           <span class="hidden sm:inline">Comment Eden Labs peut résoudre vos défis spécifiques</span>
           <span class="sm:hidden">Résoudre vos défis spécifiques</span>
           <ArrowRightIcon class="ml-2 -mr-1 h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-        </button>
+        </NuxtLink>
       </div>
     </div>
   </section>

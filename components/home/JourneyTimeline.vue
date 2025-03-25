@@ -6,7 +6,7 @@
           Un parcours clair et progressif vers l'autonomie avec l'IA
         </h2>
         <p class="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-secondary/70">
-          Notre méthodologie éprouvée auprès de plus de 50 entreprises similaires à la vôtre.
+          Découvrez notre méthodologie éprouvée.
         </p>
       </div>
 
@@ -36,12 +36,11 @@
 
         <!-- Mobile CTA -->
         <div class="mt-8 flex justify-center">
-          <button
+          <CalButton
             class="inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-4 py-3 text-sm font-medium text-secondary shadow-sm"
-            @click="$emit('startAudit')"
           >
-            Commencer par l'audit gratuit
-          </button>
+            Réserver votre appel découverte gratuit
+          </CalButton>
         </div>
       </div>
 
@@ -102,7 +101,7 @@
                 </li>
               </ul>
 
-              <!-- Témoignage -->
+              <!-- Témoignage
               <div class="border-t border-light/50 pt-4">
                 <p class="text-sm italic text-secondary/70">
                   "{{ steps[activeTabletStep].testimonial.quote }}"
@@ -122,24 +121,23 @@
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
           <!-- Tablette CTAs -->
           <div class="mt-10 flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4 justify-center">
-            <button
-              class="inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-5 py-3 text-sm font-medium text-secondary shadow-sm"
-              @click="$emit('startAudit')"
+            <CalButton
+              class="inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-5 py-3 text-sm font-medium text-secondary shadow-sm cursor-pointer"
             >
-              Commencer par l'audit gratuit
-            </button>
-            <button
+              Commencer par l'audit
+            </CalButton>
+            <NuxtLink
               class="inline-flex items-center justify-center rounded-md border-2 border-secondary bg-transparent px-5 py-3 text-sm font-medium text-secondary"
-              @click="$emit('learnMore')"
+              to="/services"
             >
               En savoir plus
-            </button>
+            </NuxtLink>
           </div>
         </div>
       </div>
@@ -229,7 +227,7 @@
                   </li>
                 </ul>
 
-                <!-- Témoignage -->
+                <!-- Témoignage
                 <div 
                   class="mt-6 lg:mt-8 rounded-lg bg-light/30 p-4 lg:p-6 transform transition-all duration-300"
                   :class="[activeStep >= index ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0']"
@@ -252,7 +250,7 @@
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </li>
           </ul>
@@ -260,18 +258,17 @@
 
         <!-- Desktop CTAs -->
         <div class="mt-16 lg:mt-24 flex justify-center space-x-6">
-          <button
-            class="inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-6 lg:px-8 py-3.5 lg:py-4 text-base lg:text-lg font-medium text-secondary shadow-sm transition-all duration-200 hover:bg-primary-light hover:border-primary-light hover:scale-105"
-            @click="$emit('startAudit')"
+          <CalButton
+            class="cursor-pointer inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-6 lg:px-8 py-3.5 lg:py-4 text-base lg:text-lg font-medium text-secondary shadow-sm transition-all duration-200 hover:bg-primary-light hover:border-primary-light hover:scale-105"
           >
-            Commencer par l'audit gratuit
-          </button>
-          <button
+            Réserver votre appel découverte gratuit
+          </CalButton>
+          <NuxtLink
             class="inline-flex items-center justify-center rounded-md border-2 border-secondary bg-transparent px-6 lg:px-8 py-3.5 lg:py-4 text-base lg:text-lg font-medium text-secondary transition-all duration-200 hover:bg-secondary hover:text-light hover:scale-105"
-            @click="$emit('learnMore')"
+            to="/services"
           >
             Découvrir notre méthode en détail
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </div>

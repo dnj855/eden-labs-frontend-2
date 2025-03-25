@@ -39,7 +39,7 @@
             <!-- CTAs -->
             <div class="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               <CalButton
-                class="flex items-center justify-center rounded-md border-2 border-primary bg-primary px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-secondary hover:bg-primary-light hover:border-primary-light transition-colors duration-200 md:py-3 lg:py-4 md:text-lg lg:px-10"
+                class="cursor-pointer flex items-center justify-center rounded-md border-2 border-primary bg-primary px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-secondary hover:bg-primary-light hover:border-primary-light transition-colors duration-200 md:py-3 lg:py-4 md:text-lg lg:px-10"
               >
                 Réserver un appel découverte gratuit
               </CalButton>

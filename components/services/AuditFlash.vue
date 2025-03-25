@@ -159,7 +159,7 @@ const faq = [
   },
   {
     question: 'Quel est le prix de l\'audit flash ?',
-    answer: 'L\'audit flash est gratuit si vous réservez une autre prestation dans les 30 jours. Sinon il est facturé 600€ HT.'
+    answer: 'L\'audit flash est gratuit si vous réservez une autre prestation dans les 30 jours. Sinon il est facturé 400€ HT.'
   }
 ]
 </script>
