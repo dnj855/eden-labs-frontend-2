@@ -202,6 +202,7 @@
 </template>
 
 <script setup lang="ts">
+defineOgImageComponent('ELTemplate')
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import gsap from 'gsap'

@@ -174,6 +174,7 @@
 </template>
 
 <script setup lang="ts">
+defineOgImageComponent('ELTemplate')
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { onBeforeUnmount, onMounted, ref } from 'vue';

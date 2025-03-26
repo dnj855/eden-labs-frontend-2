@@ -202,3 +202,7 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+defineOgImageComponent('ELTemplate')
+</script>

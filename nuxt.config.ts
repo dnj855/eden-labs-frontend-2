@@ -21,35 +21,41 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-
-  app: {
-    head: {
-      title: 'Eden Labs - Conseil en IA Générative',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { 
-          hid: 'description', 
-          name: 'description', 
-          content: 'Eden Labs accompagne les PME/ETI dans leur transformation numérique avec l\'IA générative' 
-        }
-      ],
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { 
-          rel: 'stylesheet', 
-          href: 'https://rsms.me/inter/inter.css'
-        }
-      ]
-    }
+  site: {
+    url: 'https://eden-labs.fr',
+    name: 'Eden Labs',
+    description: 'Eden Labs accompagne les PME/ETI dans leur transformation numérique avec l\'IA générative',
+    defaultLocale: 'fr', // not needed if you have @nuxtjs/i18n installed
   },
+
+  // app: {
+  //   head: {
+  //     title: 'Eden Labs - Conseil en IA Générative',
+  //     meta: [
+  //       { charset: 'utf-8' },
+  //       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+  //       { 
+  //         hid: 'description', 
+  //         name: 'description', 
+  //         content: 'Eden Labs accompagne les PME/ETI dans leur transformation numérique avec l\'IA générative' 
+  //       }
+  //     ],
+  //     link: [
+  //       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+  //       { 
+  //         rel: 'stylesheet', 
+  //         href: 'https://rsms.me/inter/inter.css'
+  //       }
+  //     ]
+  //   }
+  // },
 
   routeRules: {
     // Statique par défaut avec revalidation périodique
     '/**': { isr: true },
     // Pages dynamiques avec revalidation plus fréquente
-    '/blog/**': { isr: 3600 },
-    '/resources/**': { isr: 3600 }
+    '/blog/**': { isr: 3600, robots: false },
+    '/resources/**': { isr: 3600, robots: false }
   },
 
   experimental: {
@@ -60,5 +66,5 @@ export default defineNuxtConfig({
     '~/plugins/gsap.client.ts'
   ],
 
-  modules: ['@nuxt/image']
+  modules: ['@nuxt/image', '@nuxtjs/seo']
 })
