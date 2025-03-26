@@ -25,9 +25,12 @@
           <div class="relative mx-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none p-3 sm:p-4 lg:p-6">
             <div class="relative mx-auto w-full rounded-full shadow-xl overflow-hidden">
               <NuxtImg
+                format="webp"
                 class="w-full"
                 src="/images/logo.png"
                 alt="À propos d'Eden Labs"
+                placeholder
+                loading="lazy"
               />
             </div>
           </div>

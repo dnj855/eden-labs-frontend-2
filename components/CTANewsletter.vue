@@ -195,10 +195,12 @@
             
             <!-- Image (masquée sur mobile petit) -->
             <div class="relative hidden sm:block h-64 md:h-auto lg:h-full">
-              <img
-                class="absolute inset-0 h-full w-full object-cover object-left-top lg:static lg:translate-x-0 lg:translate-y-0 sm:translate-x-16 transform translate-x-6 translate-y-6 rounded-md"
+              <NuxtImg
+                placeholder
+                class= 'absolute inset-0 h-full w-full object-cover object-left-top lg:static lg:translate-x-0 lg:translate-y-0 sm:translate-x-16 transform translate-x-6 translate-y-6 rounded-md',
+                alt='App screenshot'
                 src="/images/newsletter.webp"
-                alt="App screenshot"
+                loading="lazy"
               />
             </div>
           </div>
