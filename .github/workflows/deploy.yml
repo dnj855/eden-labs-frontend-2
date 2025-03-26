@@ -1,4 +1,4 @@
-name: Déploiement Nuxt App
+name: Déploiement Production
 
 on:
   push:
@@ -6,8 +6,12 @@ on:
       - master
 
 jobs:
-  deploy:
+  deploy-production:
+    name: Déploiement Production
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://eden-labs.fr
 
     steps:
       - name: Récupérer le code source
@@ -22,7 +26,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build et Push de l'image Docker
+      - name: Sauvegarde de l'image actuelle en taggant "previous"
+        run: |
+          docker pull clangroth/eden-labs:latest || echo "Pas d'image précédente"
+          docker tag clangroth/eden-labs:latest clangroth/eden-labs:previous
+          docker push clangroth/eden-labs:previous
+
+      - name: Build et Push de la nouvelle image Docker
         uses: docker/build-push-action@v4
         with:
           context: .
@@ -37,4 +47,20 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             docker pull clangroth/eden-labs:latest
-            docker compose -f /opt/nuxt-test/docker-compose.yml up -d
+            docker compose -f /opt/nuxt-test/docker-compose.production.yml up -d
+
+      - name: Vérification de la disponibilité
+        run: |
+          curl -f https://eden-labs.fr
+        continue-on-error: true
+
+      - name: Rollback en cas d'échec
+        if: ${{ failure() }}
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            echo "Le déploiement a échoué, lancement du rollback..."
+            /opt/nuxt-test/rollback.sh
