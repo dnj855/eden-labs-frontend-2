@@ -51,6 +51,8 @@ jobs:
 
       - name: Vérification de la disponibilité
         run: |
+          echo "Attente de 10 secondes"
+          sleep 10
           curl -f https://eden-labs.fr
         continue-on-error: true
 
