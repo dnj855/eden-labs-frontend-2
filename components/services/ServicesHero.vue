@@ -22,11 +22,13 @@
       <div class="mt-6 md:mt-8 lg:mt-0 flex-1">
         <div class="relative mx-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none p-2 sm:p-3 lg:p-4">
           <div class="relative mx-auto w-full rounded-lg shadow-lg sm:shadow-xl overflow-hidden transform sm:hover:scale-[1.02] transition-transform duration-300">
-            <img
+            <NuxtImg
+              format="webp"
               src="/images/hero-offres.webp"
               alt="Solutions d'IA pour entreprises"
               class="w-full h-auto rounded-md bg-white/5 shadow-md sm:shadow-xl ring-1 ring-white/10"
-              loading="eager"
+              placeholder
+              loading="lazy"
             />
           </div>
         </div>

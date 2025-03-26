@@ -32,16 +32,22 @@
           <h2 class="font-headers text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-secondary">
             L'histoire d'Eden Labs
           </h2>
-          <div class="mt-6 space-y-4 text-secondary/70">
-            <p>
-              L'histoire d'Eden Labs commence par celle de son fondateur, Cédric Lang-Roth. Pendant 15 ans, Cédric a exercé le métier de journaliste, aiguisant sa capacité à décrypter des situations complexes et à vulgariser sans simplifier à l'excès.
-            </p>
-            <p>
-              Fasciné par les possibilités offertes par l'intelligence artificielle et les outils no-code, Cédric a entrepris une reconversion audacieuse dans le domaine de la tech. Son double profil constitue un atout précieux : il sert de "traducteur" entre le monde de la technologie et celui du business.
-            </p>
-            <p>
-              C'est ainsi qu'est née Eden Labs, à la croisée de la rigueur journalistique et de l'expertise technique. Notre raison d'être : combler le fossé entre l'IA et les PME, en transformant des concepts techniques en solutions pratiques.
-            </p>
+          <div class="flex items-center space-x-4">
+
+            <div class="mt-6 space-y-4 text-secondary/70 max-md:w-full md:w-2/3">
+              <p>
+                L'histoire d'Eden Labs commence par celle de son fondateur, Cédric Lang-Roth. Pendant 15 ans, Cédric a exercé le métier de journaliste, aiguisant sa capacité à décrypter des situations complexes et à vulgariser sans simplifier à l'excès.
+              </p>
+              <p>
+                Fasciné par les possibilités offertes par l'intelligence artificielle et les outils no-code, Cédric a entrepris une reconversion audacieuse dans le domaine de la tech. Son double profil constitue un atout précieux : il sert de "traducteur" entre le monde de la technologie et celui du business.
+              </p>
+              <p>
+                C'est ainsi qu'est née Eden Labs, à la croisée de la rigueur journalistique et de l'expertise technique. Notre raison d'être : combler le fossé entre l'IA et les PME, en transformant des concepts techniques en solutions pratiques.
+              </p>
+            </div>
+            <div class="max-md:hidden lg:w-1/3">
+              <NuxtImg src="/images/about-us.webp" alt="Cédric Lang-Roth, fondateur d'Eden Labs" class="rounded-lg shadow-lg"></NuxtImg>
+            </div>
           </div>
         </div>
       </div>

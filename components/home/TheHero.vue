@@ -73,10 +73,14 @@
                 class="relative block w-full bg-white rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                 @click="showVideo = true"
               >
-                <img
+                <NuxtImg
+                  format="webp"
                   class="w-full"
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+                  src="/images/home-hero.webp"
                   alt="Démonstration d'utilisation de l'IA générative"
+                  placeholder
+                  loading="lazy"
+                  preload
                 />
                 <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                   <svg
