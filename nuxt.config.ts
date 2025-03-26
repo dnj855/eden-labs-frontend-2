@@ -66,5 +66,5 @@ export default defineNuxtConfig({
     '~/plugins/gsap.client.ts'
   ],
 
-  modules: ['@nuxt/image', '@nuxtjs/seo', 'nuxt-security']
+  modules: ['@nuxt/image', '@nuxtjs/seo', 'nuxt-security', 'nuxt-gtag']
 })

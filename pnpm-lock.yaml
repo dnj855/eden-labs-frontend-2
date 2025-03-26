@@ -29,6 +29,9 @@ importers:
       nuxt:
         specifier: ^3.16.1
         version: 3.16.1(@parcel/watcher@2.5.1)(@types/node@22.13.9)(better-sqlite3@11.8.1)(db0@0.3.1(better-sqlite3@11.8.1))(ioredis@5.6.0)(lightningcss@1.29.1)(magicast@0.3.5)(rollup@4.37.0)(terser@5.39.0)(typescript@5.8.2)(vite@6.2.3(@types/node@22.13.9)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(yaml@2.7.0))(yaml@2.7.0)
+      nuxt-gtag:
+        specifier: 3.0.2
+        version: 3.0.2(magicast@0.3.5)
       nuxt-security:
         specifier: 2.2.0
         version: 2.2.0(magicast@0.3.5)(rollup@4.37.0)
@@ -2555,6 +2558,9 @@ packages:
 
   nuxt-csurf@1.6.5:
     resolution: {integrity: sha512-/DMNTON8LIVhntamKbBmAuM879B0QnuSJa7ZAkmkZe+21m+1QGcjVUxtSkizaM48NUvkuAGYOG0ncn+kqEgrzw==}
+
+  nuxt-gtag@3.0.2:
+    resolution: {integrity: sha512-0Spu/rffPxW7REebkjE22qQOuVZIQuyIuvd61InDdJU+d+gRIqWhrUuKBWdk43N/J1elj+cTK2kEdk5FQX7vdQ==}
 
   nuxt-link-checker@4.3.0:
     resolution: {integrity: sha512-Ps//GJjuQ6yKZvSrOmpH7goG7YKioBctlm9IfTn3EDvp0cO0Cho0n7DO7RcVquclj/rLtVCukacRlbN411/z0Q==}
@@ -6390,6 +6396,15 @@ snapshots:
       '@nuxt/kit': 3.16.1(magicast@0.3.5)
       defu: 6.1.4
       uncsrf: 1.2.0
+    transitivePeerDependencies:
+      - magicast
+
+  nuxt-gtag@3.0.2(magicast@0.3.5):
+    dependencies:
+      '@nuxt/kit': 3.16.1(magicast@0.3.5)
+      defu: 6.1.4
+      pathe: 1.1.2
+      ufo: 1.5.4
     transitivePeerDependencies:
       - magicast
 
