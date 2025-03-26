@@ -21,9 +21,6 @@ RUN pnpm run build
 FROM node:18-alpine AS runner
 WORKDIR /app
 
-# Définir la variable d'environnement pour le mode production
-ENV NODE_ENV=production
-
 # Copier les fichiers de build depuis l'étape "builder"
 COPY --from=builder /app/.output ./.output
 
