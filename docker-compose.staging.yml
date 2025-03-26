@@ -1,0 +1,22 @@
+services:
+  nuxt-staging:
+    build: .
+    image: clangroth/eden-labs:staging
+    container_name: nuxt-app
+    restart: always
+    networks:
+      - traefik_default
+    env_file:
+      - .env.staging
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nuxt-staging.rule=Host(`test.eden-labs.fr`)"
+      - "traefik.http.routers.nuxt-staging.entrypoints=websecure"
+      - "traefik.http.routers.nuxt-staging.tls=true"
+      - "traefik.http.routers.nuxt-staging.tls.certresolver=myresolver"
+      - "traefik.http.services.nuxt-staging.loadbalancer.server.port=3000"
+      - "traefik.http.routers.nuxt-staging.middlewares=authelia@docker"
+
+networks:
+  traefik_default:
+    external: true
