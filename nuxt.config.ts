@@ -28,27 +28,35 @@ export default defineNuxtConfig({
     defaultLocale: 'fr', // not needed if you have @nuxtjs/i18n installed
   },
 
-  // app: {
-  //   head: {
-  //     title: 'Eden Labs - Conseil en IA Générative',
-  //     meta: [
-  //       { charset: 'utf-8' },
-  //       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-  //       { 
-  //         hid: 'description', 
-  //         name: 'description', 
-  //         content: 'Eden Labs accompagne les PME/ETI dans leur transformation numérique avec l\'IA générative' 
-  //       }
-  //     ],
-  //     link: [
-  //       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-  //       { 
-  //         rel: 'stylesheet', 
-  //         href: 'https://rsms.me/inter/inter.css'
-  //       }
-  //     ]
-  //   }
-  // },
+  app: {
+    head: {
+      title: 'Eden Labs - Conseil en IA Générative',
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { 
+          name: 'description', 
+          content: 'Eden Labs accompagne les PME/ETI dans leur transformation numérique avec l\'IA générative' 
+        }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { 
+          rel: 'stylesheet', 
+          href: 'https://rsms.me/inter/inter.css'
+        }
+      ],
+      script: [
+        {
+          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5ZB6N27R');`
+        }
+      ]
+    }
+  },
 
   routeRules: {
     // Statique par défaut avec revalidation périodique
@@ -66,5 +74,5 @@ export default defineNuxtConfig({
     '~/plugins/gsap.client.ts'
   ],
 
-  modules: ['@nuxt/image', '@nuxtjs/seo', 'nuxt-security', 'nuxt-gtag']
+  modules: ['@nuxt/image', '@nuxtjs/seo', 'nuxt-security']
 })
