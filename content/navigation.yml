@@ -1,0 +1,9 @@
+body:
+  - name: Accueil
+    path: "/"
+  - name: Services
+    path: "/services"
+  - name: Blog
+    path: "/blog"
+  - name: À propos
+    path: "/about"

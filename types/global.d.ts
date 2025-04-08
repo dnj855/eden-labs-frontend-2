@@ -9,3 +9,8 @@ interface Window {
     (action: string, ...args: any[]): void;
   };
 }
+
+interface navigationItem {
+  path: string;
+  name: string;
+}

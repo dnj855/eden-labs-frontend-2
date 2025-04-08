@@ -145,46 +145,18 @@ import { useRoute } from 'vue-router';
 import BookingCTA from '~/components/BookingCTA.vue';
 import ContactModal from '~/components/ContactModal.vue';
 import useContactModalState from '~/composables/useContactModal';
+import type { navigationItem } from '~/types/global';
 
-interface NavigationItem {
-  path: string;
-  name: string;
-  // Ajoutez d'autres propriétés si nécessaire
-}
-
-// Définir l'interface pour la réponse de l'API
-// interface NavigationResponse {
-//   data: {
-//     data: NavigationItem[];
-//     // Ajoutez d'autres propriétés si nécessaire
-//   };
-// }
+const { data: navigation } = await useAsyncData('navigation', () => {
+  return queryCollection('navigation').first()
+})
+const navigationItems = navigation.value?.meta.body as navigationItem[]
 
 type BookingCTAInstance = InstanceType<typeof BookingCTA>;
 
 const route = useRoute()
 const isLegalMentionsPage = computed(() => route.path === '/legal-mentions')
 
-// const baseUrl = useRuntimeConfig().public.strapiUrl;
-
-// const { $api } = useNuxtApp();
-// const { data } = await $api.fetch(baseUrl + '/api/Navigation-Item');
-// const navigationItems = computed(() => (data.value as NavigationResponse)?.data?.data || []);
-
-const navigationItems = [
-  {
-    name: "Accueil",
-    path: "/"
-  },
-  {
-    name: "Services",
-    path: "/services"
-  },
-  {
-    name: "À propos",
-    path: "/about"
-  }
-]
 
 function openBookingModal() {
   showBookingModal.value = true
