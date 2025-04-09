@@ -10,7 +10,6 @@
     <!-- Problématiques & Solutions -->
     <ProblemsSolutionsComponent
       ref="problemsSection"
-      @open-qualification="openQualificationModal"
     />
 
     <!-- Parcours -->
@@ -23,8 +22,6 @@
     <!-- Solutions par secteur -->
     <SectorSolutionsComponent
       ref="sectorsSection"
-      @explore-sector="exploreSector"
-      @contact="openContactModal"
     />
 
     <!-- Démo IA
@@ -217,26 +214,6 @@ function scrollToResources() {
 // Handlers
 function openBookingModal() {
   showBookingModal.value = true
-}
-
-function exploreSector(sector: string) {
-  // TODO: Implémenter la navigation vers la page du secteur
-  console.log('Explorer le secteur:', sector)
-}
-
-function openQualificationModal() {
-  // TODO: Implémenter le modal de qualification
-  console.log('Ouvrir le modal de qualification')
-}
-
-function openContactModal() {
-  // TODO: Implémenter le modal de contact
-  console.log('Ouvrir le modal de contact')
-}
-
-function downloadResource(resource: any) {
-  // TODO: Implémenter le téléchargement de ressource
-  console.log('Télécharger la ressource:', resource)
 }
 
 // SEO

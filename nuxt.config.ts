@@ -4,17 +4,23 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
 
-  runtimeConfig: {
-    strapiApiToken: process.env.STRAPI_API_TOKEN,
-    strapiUrl: process.env.STRAPI_URL,
-    public: {
-      strapiApiToken: process.env.STRAPI_API_TOKEN,
-      strapiUrl: process.env.STRAPI_URL,
-    },
-  },
-
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  security: {
+    headers: {
+      contentSecurityPolicy: {
+        "script-src": [
+          "'self'",
+          "https:",
+          "'unsafe-inline'",
+          "'strict-dynamic'",
+          "'nonce-{{nonce}}'",
+          "'unsafe-eval'",
+        ],
+      },
+    },
   },
 
   devtools: { enabled: true },
@@ -58,12 +64,6 @@ export default defineNuxtConfig({
     },
   },
 
-  routeRules: {
-    // Pages dynamiques avec revalidation plus fréquente
-    "/blog/**": { isr: 3600, robots: false },
-    "/resources/**": { isr: 3600, robots: false },
-  },
-
   experimental: {
     payloadExtraction: true,
   },
@@ -74,11 +74,25 @@ export default defineNuxtConfig({
     google: {},
   },
 
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 3,
+        },
+      },
+    },
+    renderer: {
+      anchorLinks: false,
+    },
+  },
+
   modules: [
     "@nuxt/image",
     "@nuxtjs/seo",
     "nuxt-security",
-    "@nuxt/fonts",
     "@nuxt/content",
+    "@nuxt/ui",
+    "nuxt-time",
   ],
 });

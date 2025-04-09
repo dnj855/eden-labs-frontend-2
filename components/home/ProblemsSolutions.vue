@@ -3,7 +3,7 @@
     <div class="relative max-w-xl mx-auto px-4 sm:px-6 lg:px-8 lg:max-w-7xl">
       <div class="relative">
         <h2 class="text-center text-2xl sm:text-3xl md:text-4xl leading-8 font-headers font-extrabold tracking-tight text-secondary">
-          L'IA peut transformer votre entreprise, mais par où commencer?
+          L'IA peut transformer votre entreprise, mais par où commencer ?
         </h2>
         <p class="mt-3 sm:mt-4 max-w-3xl mx-auto text-center text-base sm:text-lg md:text-xl text-secondary/70">
           Découvrez comment nous répondons aux défis courants de la transformation numérique.

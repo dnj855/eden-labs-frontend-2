@@ -10,7 +10,7 @@
           </div>
           <div class="hidden sm:ml-6 md:ml-8 sm:flex sm:space-x-4 md:space-x-8">
             <NuxtLink v-if="navigationItems" v-for="item in navigationItems" :key="item.path" :to="item.path"
-              class="inline-flex items-center px-1 pt-1 border-b-2 text-sm md:text-base font-body transition-colors duration-200"
+              class="inline-flex items-center px-1 pt-1 border-b-2 text-sm md:text-base font-body transition-colors duration-200 cursor-pointer"
               :class="[
                 $route.path === item.path
                   ? 'border-primary text-secondary font-medium'
@@ -43,13 +43,13 @@
     </div>
 
     <!-- Menu mobile -->
-    <!-- <transition enter-active-class="transition duration-200 ease-out"
+    <transition enter-active-class="transition duration-200 ease-out"
       enter-from-class="transform -translate-y-3 opacity-0" enter-to-class="transform translate-y-0 opacity-100"
       leave-active-class="transition duration-100 ease-in" leave-from-class="transform translate-y-0 opacity-100"
       leave-to-class="transform -translate-y-3 opacity-0">
       <div v-show="isOpen" class="sm:hidden" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1">
-          <NuxtLink v-for="item in navigation" :key="item.path" :to="item.path" @click="closeMenu"
+          <NuxtLink v-for="item in navigationItems" :key="item.path" :to="item.path" @click="closeMenu"
             class="block pl-3 pr-4 py-2 border-l-4 text-base font-body font-medium transition-colors duration-200"
             :class="[
               $route.path === item.path
@@ -68,7 +68,7 @@
           </div>
         </div>
       </div>
-    </transition> -->
+    </transition>
   </nav>
 </template>
 
@@ -78,7 +78,7 @@ import type { navigationItem } from '~/types/global';
 
 const isOpen = ref(false)
 
-const { data: navigation } = await useAsyncData('navigation', () => {
+const { data: navigation } = useAsyncData('navigation', () => {
   return queryCollection('navigation').first()
 })
 const navigationItems = navigation.value?.meta.body as navigationItem[]
