@@ -2,13 +2,15 @@
 /**
  * @credits Full Stack Heroes <https://fullstackheroes.com/>
  */
+const { url } = useSiteConfig()
 
 withDefaults(defineProps<{
   title?: string
   logo?: string
 }>(), {
-  title: 'title',
-  logo: '/images/logo.png',
+  title: 'Titre par défaut',
+  // On utilise le chemin vers le logo qui est déjà optimisé pendant le build
+  logo: '/images/logo.webp',
 })
 </script>
 
@@ -19,7 +21,7 @@ withDefaults(defineProps<{
   >
     <div class="flex items-start justify-start h-full">
       <div class="flex flex-col justify-between w-full h-full p-20">
-        <NuxtImg :src="logo" height="200" width="200" format="webp" quality="90" loading="eager" />
+        <img :src="`${url}${logo}`" height="200" width="200" />
         <h1 class="text-[60px] text-white font-bold text-left">
           {{ title }}
         </h1>
