@@ -46,7 +46,18 @@
               </p>
             </div>
             <div class="max-md:hidden lg:w-1/3">
-              <NuxtImg src="/images/about-us.webp" alt="Cédric Lang-Roth, fondateur d'Eden Labs" class="rounded-lg shadow-lg"></NuxtImg>
+              <NuxtImg 
+                src="/images/about-us.webp" 
+                alt="Cédric Lang-Roth, fondateur d'Eden Labs" 
+                class="rounded-lg shadow-lg"
+                width="400"
+                height="600"
+                format="webp"
+                quality="85"
+                loading="lazy"
+                sizes="33vw"
+                placeholder
+              />
             </div>
           </div>
         </div>

@@ -21,10 +21,17 @@
         <div class="flex flex-col md:flex-row gap-8 items-center">
           <!-- Image -->
           <div class="md:w-1/2">
-            <img 
+            <NuxtImg 
               :src="baseUrl + resource.attributes?.Image?.data?.attributes?.formats?.large?.url" 
               :alt="resource.attributes?.Title"
               class="rounded-lg shadow-xl w-full object-cover"
+              width="600"
+              height="400"
+              format="webp"
+              quality="85"
+              loading="eager"
+              sizes="100vw md:50vw"
+              placeholder
             />
           </div>
           <!-- Content -->

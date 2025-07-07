@@ -74,13 +74,13 @@
                 @click="showVideo = true"
               >
                 <NuxtImg
-                  format="webp"
                   class="w-full"
                   src="/images/home-hero.webp"
                   alt="Démonstration d'utilisation de l'IA générative"
+                  preset="hero"
                   placeholder
-                  loading="lazy"
-                  preload
+                  loading="eager"
+                  priority
                 />
                 <div class="absolute inset-0 w-full h-full flex items-center justify-center">
                   <svg
