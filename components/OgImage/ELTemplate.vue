@@ -8,7 +8,7 @@ withDefaults(defineProps<{
   logo?: string
 }>(), {
   title: 'title',
-  logo: '/images/logo.webp',
+  logo: '/images/logo.png',
 })
 </script>
 
