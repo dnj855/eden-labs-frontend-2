@@ -68,10 +68,14 @@
           >
             <!-- Image -->
             <div class="flex-shrink-0">
-              <img
+              <NuxtImg
                 :src="resource.image"
                 :alt="resource.title"
                 class="h-40 sm:h-44 md:h-48 w-full object-cover"
+                preset="card"
+                loading="lazy"
+                sizes="100vw sm:50vw lg:33vw"
+                placeholder
               />
             </div>
 

@@ -27,7 +27,7 @@
               <NuxtImg
                 format="webp"
                 class="w-full"
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="À propos d'Eden Labs"
                 placeholder
                 loading="lazy"

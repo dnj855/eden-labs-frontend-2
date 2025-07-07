@@ -5,10 +5,14 @@
     >
   <div class="bg-white/50 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
     <div class="relative h-48">
-      <img 
+      <NuxtImg 
         :src="baseUrl + resource.Image.formats.medium.url" 
         :alt="resource.Title"
         class="w-full h-full object-cover"
+        preset="card"
+        loading="lazy"
+        sizes="100vw sm:50vw lg:33vw"
+        placeholder
       />
       <div class="absolute top-4 right-4">
         <span 

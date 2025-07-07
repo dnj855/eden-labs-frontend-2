@@ -57,10 +57,13 @@
             class="rounded-lg bg-white p-4 sm:p-5 md:p-6 shadow-lg transition-all duration-300 hover:shadow-xl"
           >
             <div class="mb-3 sm:mb-4 flex items-center">
-              <img
+              <NuxtImg
                 :src="testimonial.avatar"
                 :alt="testimonial.name"
                 class="h-10 w-10 sm:h-12 sm:w-12 rounded-full ring-2 ring-primary"
+                preset="avatar"
+                loading="lazy"
+                placeholder
               />
               <div class="ml-3 sm:ml-4">
                 <h4 class="font-headers text-base sm:text-lg font-medium text-secondary">
@@ -142,7 +145,7 @@
           <div class="absolute bottom-0 left-0 right-0 flex justify-center items-center mt-4 space-x-8">
             <button 
               @click="prevTestimonial" 
-              class="bg-white rounded-full p-2 shadow-md flex items-center justify-center"
+              class="bg-white rounded-full p-2 shadow-md flex items-center justify-center touch-manipulation min-h-[44px] min-w-[44px]"
               aria-label="Témoignage précédent"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -155,7 +158,7 @@
               <button 
                 v-for="(_, index) in testimonials" 
                 :key="index"
-                class="w-2 h-2 rounded-full transition-colors duration-300"
+                class="w-2 h-2 rounded-full transition-colors duration-300 touch-manipulation min-h-[44px] min-w-[44px] p-2"
                 :class="currentTestimonial === index ? 'bg-primary' : 'bg-secondary/30'"
                 @click="currentTestimonial = index"
                 :aria-label="`Voir témoignage ${index + 1}`"
@@ -164,7 +167,7 @@
             
             <button 
               @click="nextTestimonial" 
-              class="bg-white rounded-full p-2 shadow-md flex items-center justify-center"
+              class="bg-white rounded-full p-2 shadow-md flex items-center justify-center touch-manipulation min-h-[44px] min-w-[44px]"
               aria-label="Témoignage suivant"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -178,7 +181,7 @@
       <!-- CTA -->
       <div class="mt-8 sm:mt-12 lg:mt-16 text-center">
         <button
-          class="inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-secondary shadow-sm transition-colors duration-200 hover:bg-primary-light hover:border-primary-light"
+          class="inline-flex items-center justify-center rounded-md border-2 border-primary bg-primary px-4 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium text-secondary shadow-sm transition-colors duration-200 hover:bg-primary-light hover:border-primary-light touch-manipulation min-h-[48px]"
           @click="$emit('startAudit')"
         >
           Rejoignez nos clients satisfaits
@@ -222,8 +225,8 @@ onMounted(() => {
   const carouselElement = document.querySelector('.sm\\:hidden')
   
   if (carouselElement) {
-    carouselElement.addEventListener('touchstart', handleTouchStart, { passive: true })
-    carouselElement.addEventListener('touchend', handleTouchEnd, { passive: true })
+    carouselElement.addEventListener('touchstart', handleTouchStart as EventListener, { passive: true })
+    carouselElement.addEventListener('touchend', handleTouchEnd as EventListener, { passive: true })
   }
 })
 
@@ -231,8 +234,8 @@ onUnmounted(() => {
   const carouselElement = document.querySelector('.sm\\:hidden')
   
   if (carouselElement) {
-    carouselElement.removeEventListener('touchstart', handleTouchStart)
-    carouselElement.removeEventListener('touchend', handleTouchEnd)
+    carouselElement.removeEventListener('touchstart', handleTouchStart as EventListener)
+    carouselElement.removeEventListener('touchend', handleTouchEnd as EventListener)
   }
 })
 

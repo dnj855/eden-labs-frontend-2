@@ -8,7 +8,7 @@ withDefaults(defineProps<{
   logo?: string
 }>(), {
   title: 'title',
-  logo: '/images/logo.png',
+  logo: '/images/logo.webp',
 })
 </script>
 
@@ -19,7 +19,7 @@ withDefaults(defineProps<{
   >
     <div class="flex items-start justify-start h-full">
       <div class="flex flex-col justify-between w-full h-full p-20">
-        <img :src="logo" height="200">
+        <NuxtImg :src="logo" height="200" width="200" format="webp" quality="90" loading="eager" />
         <h1 class="text-[60px] text-white font-bold text-left">
           {{ title }}
         </h1>

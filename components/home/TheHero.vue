@@ -51,90 +51,30 @@
               </NuxtLink>
             </div>
 
-            <!-- Démo vidéo -->
-            <div class="mt-6 sm:mt-8 flex justify-center lg:justify-start">
-              <button
-                class="inline-flex items-center text-primary hover:text-primary-light transition-colors duration-200"
-                @click="showVideo = true"
-              >
-                <PlayCircleIcon class="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
-                <span class="text-sm sm:text-base">Découvrir notre offre en 1 minute</span>
-              </button>
-            </div>
+
           </div>
         </div>
 
-        <!-- Image/Vidéo -->
+        <!-- Image -->
         <div class="mt-6 md:mt-8 lg:mt-0 lg:col-span-6">
           <div class="relative mx-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none p-3 sm:p-4 lg:p-6">
             <div class="relative mx-auto w-full rounded-lg shadow-xl overflow-hidden">
-              <button
-                type="button"
-                class="relative block w-full bg-white rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-                @click="showVideo = true"
-              >
-                <NuxtImg
-                  format="webp"
-                  class="w-full"
-                  src="/images/home-hero.webp"
-                  alt="Démonstration d'utilisation de l'IA générative"
-                  placeholder
-                  loading="lazy"
-                  preload
-                />
-                <div class="absolute inset-0 w-full h-full flex items-center justify-center">
-                  <svg
-                    class="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-primary"
-                    fill="currentColor"
-                    viewBox="0 0 84 84"
-                  >
-                    <circle opacity="0.9" cx="42" cy="42" r="42" fill="white" />
-                    <path d="M55.5 41.5L36.75 53.344V29.656L55.5 41.5Z" />
-                  </svg>
-                </div>
-              </button>
+              <NuxtImg
+                class="w-full rounded-lg"
+                src="/images/home-hero.webp"
+                alt="Solutions d'IA générative pour entreprises"
+                preset="hero"
+                placeholder
+                loading="eager"
+                priority
+              />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modal Vidéo -->
-    <TransitionRoot appear :show="showVideo" as="template">
-      <Dialog as="div" @close="showVideo = false" class="relative z-50">
-        <TransitionChild
-          as="template"
-          enter="duration-300 ease-out"
-          enter-from="opacity-0"
-          enter-to="opacity-100"
-          leave="duration-200 ease-in"
-          leave-from="opacity-100"
-          leave-to="opacity-0"
-        >
-          <div class="fixed inset-0 bg-black bg-opacity-75" />
-        </TransitionChild>
 
-        <div class="fixed inset-0 overflow-y-auto">
-          <div class="flex min-h-full items-center justify-center p-2 sm:p-4 text-center">
-            <TransitionChild
-              as="template"
-              enter="duration-300 ease-out"
-              enter-from="opacity-0 scale-95"
-              enter-to="opacity-100 scale-100"
-              leave="duration-200 ease-in"
-              leave-from="opacity-100 scale-100"
-              leave-to="opacity-0 scale-95"
-            >
-              <DialogPanel class="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all">
-                <div class="relative aspect-video">
-                  <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/B5lh97-N3bE?si=igTNCHj-e_yPX6T9&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-              </DialogPanel>
-            </TransitionChild>
-          </div>
-        </div>
-      </Dialog>
-    </TransitionRoot>
 
     <!-- Indicateur de scroll - Caché sur petits écrans -->
     <div class="hidden md:block absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -144,9 +84,5 @@
 </template>
 
 <script setup lang="ts">
-import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { ChevronDownIcon, PlayCircleIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
-
-const showVideo = ref(false)
+import { ChevronDownIcon } from '@heroicons/vue/24/outline'
 </script>
