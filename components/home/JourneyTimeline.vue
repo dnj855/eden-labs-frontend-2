@@ -314,7 +314,7 @@ const steps = [
     deliverables: [
       'Guide pratique personnalisé',
       'Accès aux ressources en ligne',
-      'Certification Eden Labs'
+      'Certification Qualiopi'
     ],
     testimonial: {
       quote: 'La formation a démystifié l\'IA pour toute notre équipe.',

@@ -13,6 +13,9 @@
         <p class="mt-1.5 sm:mt-2 text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-secondary">
           Maîtrisez l'IA générative en 2 jours
         </p>
+        <p class="mt-2 text-xs sm:text-sm text-secondary/70 font-medium">
+          <span class="inline-flex items-center"><AcademicCapIcon class="h-4 w-4 mr-1" /> Formation éligible à la certification Qualiopi via notre organisme partenaire</span>
+        </p>
         <div class="w-16 sm:w-20 h-1 bg-primary/30 mx-auto mt-4 sm:mt-6"></div>
       </div>
 
@@ -98,6 +101,7 @@
               <li>• 2 jours (14h) en présentiel ou distanciel</li>
               <li>• Possibilité de 4 demi-journées</li>
               <li>• 6 à 12 participants maximum</li>
+              <li>• Certification Qualiopi possible via notre partenaire</li>
             </ul>
           </div>
 
@@ -116,7 +120,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="mt-8 sm:mt-10 lg:mt-12 flex justify-center">
+      <div class="mt-8 sm:mt-10 lg:mt-12 flex flex-col items-center justify-center">
         <ContactButton :service="'formation'" :rounded="true" :primary="false" variant="solid"
           class="group relative px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold">
           <span class="block transition-opacity duration-300 group-hover:opacity-0">
@@ -127,6 +131,7 @@
             Demander un devis →
           </span>
         </ContactButton>
+        <p class="mt-2 text-xs text-secondary/60 text-center max-w-xs">Vous souhaitez une prise en charge Qualiopi ? Précisez-le lors de votre demande.</p>
       </div>
     </div>
   </div>

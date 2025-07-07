@@ -36,7 +36,7 @@
 
             <div class="mt-6 space-y-4 text-secondary/70 max-md:w-full md:w-2/3">
               <p>
-                L'histoire d'Eden Labs commence par celle de son fondateur, Cédric Lang-Roth. Pendant 15 ans, Cédric a exercé le métier de journaliste, aiguisant sa capacité à décrypter des situations complexes et à vulgariser sans simplifier à l'excès.
+                L'histoire d'Eden Labs commence par celle de son fondateur, <NuxtLink class="text-secondary hover:text-underline hover:text-tertiary hover:italic" to="https://clangroth.fr">Cédric Lang-Roth</NuxtLink>. Pendant 15 ans, Cédric a exercé le métier de journaliste, aiguisant sa capacité à décrypter des situations complexes et à vulgariser sans simplifier à l'excès.
               </p>
               <p>
                 Fasciné par les possibilités offertes par l'intelligence artificielle et les outils no-code, Cédric a entrepris une reconversion audacieuse dans le domaine de la tech. Son double profil constitue un atout précieux : il sert de "traducteur" entre le monde de la technologie et celui du business.
