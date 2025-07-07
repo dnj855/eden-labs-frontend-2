@@ -15,11 +15,12 @@
                 Spécialiste IA pour non-techniciens
               </span>
             </div>
-            <h1 class="font-accent mt-3 sm:mt-4 lg:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-light">
-              <span>Transformez votre</span>
-              <span class="text-primary"> entreprise avec l'IA</span>
-              <span class="font-accent block mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-tertiary tracking-tight">sans expertise technique</span>
-            </h1>
+
+<h1 class="font-accent mt-3 sm:mt-4 lg:mt-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-light">
+    <span>Transformez votre</span>
+    <span class="text-primary"> entreprise avec l'IA</span>
+    <span class="font-accent block mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-tertiary tracking-tight">sans expertise technique</span>
+</h1>
             <p class="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-light/80">
               Accompagnement sur mesure pour PME/ETI : formations, ateliers et consulting pour intégrer l'IA dans vos processus quotidiens
             </p>

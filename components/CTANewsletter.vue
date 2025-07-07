@@ -4,10 +4,11 @@
         <div class="px-4 sm:px-6 md:px-8 lg:px-0 py-8 sm:py-10 lg:py-0">
           <div class="lg:grid lg:grid-cols-2 lg:gap-4">
             <div class="lg:self-center lg:py-16 lg:pr-0 xl:py-20 xl:pl-8 xl:pr-0">
-              <h2 class="font-headers text-xl sm:text-2xl md:text-3xl font-extrabold text-light">
-                <span class="block">Restez informé</span>
-                <span class="block">des dernières innovations IA</span>
-              </h2>
+
+<h2 class="font-headers text-xl sm:text-2xl md:text-3xl font-extrabold text-light">
+    <span class="block">Restez informé</span>
+    <span class="block">des dernières innovations IA</span>
+</h2>
               <p class="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg leading-6 text-light/80">
                 Recevez nos meilleures ressources et actualités IA directement dans votre boîte mail.
               </p>
@@ -195,14 +196,15 @@
             
             <!-- Image (masquée sur mobile petit) -->
             <div class="relative hidden sm:block h-64 md:h-auto lg:h-full">
-              <NuxtImg
-                placeholder
-                class= 'absolute inset-0 h-full w-full object-cover object-left-top lg:static lg:translate-x-0 lg:translate-y-0 sm:translate-x-16 transform translate-x-6 translate-y-6 rounded-md',
-                alt='App screenshot'
-                src="/images/newsletter.webp"
-                loading="lazy"
-              />
-            </div>
+    <NuxtImg
+        placeholder
+        class= 'absolute inset-0 h-full w-full object-cover object-left-top lg:static lg:translate-x-0 lg:translate-y-0 sm:translate-x-16 transform translate-x-6 translate-y-6 rounded-md'
+        alt='App screenshot'
+        src="/_ipx/f_webp&q_80&s_1466x976/images/newsletter.webp"
+        srcset="/_ipx/f_webp&q_80&s_733x488/images/newsletter.webp 1x, /_ipx/f_webp&q_80&s_1466x976/images/newsletter.webp 2x"
+        loading="lazy"
+    />
+</div>
           </div>
         </div>
       </div>

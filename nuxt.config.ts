@@ -1,3 +1,5 @@
+// nuxt.config.ts
+
 import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -45,6 +47,13 @@ export default defineNuxtConfig({
           rel: "stylesheet",
           href: "https://rsms.me/inter/inter.css",
         },
+        { rel: "preconnect", href: "https://static.axept.io" },
+        { rel: "preconnect", href: "https://app.cal.com" },
+        {
+          rel: "preload",
+          as: "image",
+          href: "/_ipx/f_webp&q_80&s_1088x816/images/home-hero.webp",
+        },
       ],
       script: [
         {
@@ -85,6 +94,11 @@ export default defineNuxtConfig({
     // Pages dynamiques avec revalidation plus fréquente
     "/blog/**": { isr: 3600, robots: false },
     "/resources/**": { isr: 3600, robots: false },
+    "/images/**": {
+      headers: {
+        "Cache-Control": "public, max-age=31536000, immutable",
+      },
+    },
   },
 
   experimental: {

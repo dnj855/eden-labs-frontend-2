@@ -493,6 +493,7 @@ function submitBooking(event: Event) {
 }
 
 // SEO
+
 useHead({
   title: 'Nos Solutions d\'IA Générative pour Entreprises | Eden Labs',
   meta: [
